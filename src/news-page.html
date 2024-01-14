@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="ConnectToServer();">Click me</button>
+    <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr.js/2.2.0/jquery.signalR.min.js"></script>
+    <script src="http://172.17.81.34:5608/informist/hubs"></script>
+    <script src="hub.js"></script>
+    <script>
+        ConnectToServer();
+
+    </script>
+</body>
+
+</html>

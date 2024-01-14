@@ -1,0 +1,128 @@
+<app-header></app-header>
+<main class="top-spacing bottom-spacing">
+  <div class="container">
+    <a class="back-button" href="free-trial-select-wire">
+      <img src="assets/images/arrow-left.svg" alt="">
+    </a>
+  </div>
+  <div class="section-top-space free-trial-section">
+    <div class="container">
+      <div class="topsection">
+        <div class="heading-wrap">
+          <h2>{{ package_name }}</h2>
+          <p class="description small">Select your packages of interest</p>
+        </div>
+        <!-- <div class="search-container">
+          <h2> <small>{{ newSummary }}</small></h2>
+
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="toggle-button">
+                <button class="toggle-button-option" [ngClass]="{ 'active': selectedFeedType === 'LIVE' }"
+                  (click)="onFeedTypeChange('LIVE')">
+                  Live
+                </button>
+                <button class="toggle-button-option" [ngClass]="{ 'active': selectedFeedType === 'DELAY' }"
+                  (click)="onFeedTypeChange('DELAY')">
+                  Delay
+                </button>
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <select [(ngModel)]="selectedPackageDelayId" name="package_delay_id" id="package_delay_id"
+                class="form-control select" [disabled]="selectedFeedType !== 'DELAY'" (ngModelChange)="
+                onPackageDelayIdChange(selectedPackageDelayId)">
+                <option value="">Select Delay</option>
+                <option *ngFor="let package_delay of filtered_package" [value]="package_delay.package_delay_id">
+                  {{ package_delay.delay_name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="custom-accordion topics-accordion">
+        <div class="custom-accordion-item col col-md-4" *ngFor="let item of responseData">
+          <div class="custom-checkbox">
+            <input [id]="'topicCheckbox_' + item.sub_package_id" [value]="item.sub_package_id" type="checkbox"
+              name="topics" [(ngModel)]="item.selected" (click)="onSubPackageSelect(item)"
+              [disabled]="isFullSummaryType" />
+            <label [for]="'topicCheckbox_' + item.sub_package_id">
+              {{ item.sub_package_name }}
+              <span class="price">₹ {{ item.amount }}</span>
+            </label>
+          </div>
+
+          <p>{{ item.description }}</p>
+          <ul class="main-dropdown-list ml-4">
+            <li *ngFor="let category of item.categories">
+              <ng-container *ngIf="!isDynamicSubPackage(item)">
+                <div class="custom-checkbox">
+                  <input [id]="'topicCheckbox_' + category.category_id" [value]="category.category_id" type="checkbox"
+                    name="categories" [(ngModel)]="category.selected" [disabled]="isFullSummaryType"
+                    (click)="onCheckboxClick($event, item, category)" />
+                  <label [for]="'topicCheckbox_' + category.category_id">{{ category.category_name }}
+                    <span class="price">₹ {{ category.amount }}</span>
+                  </label>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="isDynamicSubPackage(item)">
+                <div class="custom-checkbox">
+                  <input [id]="'topicRadio_' + category.category_id" [value]="category.category_id" type="radio"
+                    name="categories" [disabled]="isFullSummaryType" (click)="onCheckboxClick($event, item, category)"
+                    class="has-sublist-checkbox" />
+                  <label [for]="'topicRadio_' + category.category_id">{{ category.category_name }}
+                    <span class="price">₹ {{ category.amount }}</span>
+                  </label>
+                </div>
+              </ng-container>
+              <div *ngIf="category.expanded">
+                <ul class="main-dropdown-list ml-4" *ngIf="!isDynamicSubPackage(item)">
+                  <li *ngFor="let subcategory of category.categories">
+                    <div class="custom-checkbox">
+                      <input [id]="subcategory.category_id" [value]="subcategory.category_id" type="radio"
+                        name="subcategories" [(ngModel)]="subcategory.selected" [disabled]="isFullSummaryType"
+                        (click)="onSubcategoryClick(subcategory)" />
+                      <label class="subtopic-label" [for]="subcategory.category_id">{{ subcategory.category_name }}
+                        <span class="price">₹ {{ subcategory.amount }}</span>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="main-dropdown-list ml-4" *ngIf="isDynamicSubPackage(item)">
+                  <li>
+                    <input type="text" name="" class="form-control" placeholder="Search company name"
+                      [(ngModel)]="searchText" (input)="onSearchChange($event)" />
+                  </li>
+                  <li *ngFor="let company of companies">
+                    <div class="custom-checkbox">
+                      <input [id]="'companyCheckbox_' + company.isin + category.category_code" [value]="company.isin"
+                        type="checkbox" name="companies" [(ngModel)]="company.selected" [disabled]="isFullSummaryType || 
+                       ((category.category_code.endsWith('companies') || category.category_code.endsWith('company')) && 
+                       !company.selected && 
+                       selectedCompanies.length >= getCategoryCodeNumber(category.category_code))"
+                        (change)="onCompanySelectionChange(company)" />
+                      <label [for]="'companyCheckbox_' + company.isin + category.category_code">{{ company.name
+                        }}</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-buttons fixed-bottom justify-content-end">
+        <span class="custom-secondary-button w-auto mx-4 pricebtn ">Selected
+          Topic Prices: ₹{{ totalAmount }}</span>
+        <button (click)="navigateToSummary()" [disabled]="!isAtLeastOneSubPackageSelected()"
+          class="custom-button custom-primary-button ">
+          Proceed
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,128 @@
+<app-header></app-header>
+<div *ngIf="cartData.length > 0">
+    <main class="top-spacing managed-sub-container" *ngFor="let cartItem of cartData">
+        <div class="container">
+            <img src="assets/images/arrow-left-blue.svg" alt="" class="back-button" id="BackToManageSub">
+            <h2 id="manag-heading-1">Manage Add to Subscription</h2>
+
+            <h2 id="manag-heading-2" class="mobile-text">Subscription Details</h2>
+            <div *ngFor="let package of cartItem.packages">
+                <div class="managed-subscription d-flex">
+
+                    <div id="SubscriptionDetails" class="selected-wire-list">
+                        <div class="main-title"> <i><img src="assets/images/diamond.svg" alt=""></i>
+                            {{package.package_name}}
+                            <span class="d-sm-block d-md-none">67/70 Sub - sub Topics</span>
+                        </div>
+                        <div class="custom-scroll">
+                            <div class="selected-topic-accordion" style="min-width: 250px;">
+                                <div class="accordion-item pt-0" *ngFor="let subPackage of package.sub_packages">
+                                    <div class="accordion-header" style="max-width: 200px;"
+                                        (click)="toggleAccordion($event)">
+                                        {{subPackage.sub_package_name}}
+                                    </div>
+                                    <div class="accordion-content"
+                                        [style.display]="subPackage.expanded ? 'block' : 'none'">
+                                        <div class="selected-topic-accordion">
+                                            <div class="accordion-item"
+                                                *ngFor="let categories of subPackage.categories">
+                                                <div class="accordion-header" (click)="toggleAccordion($event)">
+                                                    {{categories.category_name}}
+                                                </div>
+                                                <div class="accordion-content"
+                                                    [style.display]="categories.expanded ? 'block' : 'none'">
+                                                    <ul class="sublist-level-one"
+                                                        *ngFor="let subcategories of categories.categories">
+                                                        <li>
+                                                            {{subcategories.category_name}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="SubscriptionContent" class="subscribe-content">
+                        <div class="custom-card sub-billing">
+                            <ul>
+                                <li>{{package.package_type | titlecase }} billing<span>₹{{package.total_amount |
+                                        number}}</span></li>
+                                <li>Feed Type<span>{{package.feed_type | titlecase }}</span></li>
+                                <li>Package Type<span>{{package.package_type | titlecase}}</span></li>
+                                <li>Subscription Type<span>{{cartItem.subscription_type | titlecase}}</span></li>
+                                <li> <a (click)="deleteCart(package.package_id)"><i
+                                            class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i></a> </li>
+                            </ul>
+                            <p>Your payment will be automatically renewed</p>
+                            <p>Amount inclusive of GST</p>
+                            <div class="mobile-links">
+                                <a href="javascript:;" class="text-link">View details</a> <a href="javascript:;"
+                                    class="text-link" id="EditBtnSubscripion">Edit Subscription</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="action-buttons action-button-1 fixed-bottom-2 d-flex justify-content-end" id="action-manage-sub">
+            <button type="button" class="custom-button custom-error-button text-success"
+                id="CancelSubcription"><span>Total
+                    Amount:
+                    <span>{{cartItem.total_amount | currency: 'INR' }}</span></span> <img
+                    src="assets/images/arrow-red.svg" alt=""></button>
+            <button *ngIf="!isTrial" type="button" (click)="openVerticallyCentered(content)"
+                class="custom-button custom-primary-button d-none d-md-block">
+                Make Payment
+            </button>
+
+            <button *ngIf="isTrial" type="button" (click)="openVerticallyCentered(content)"
+                class="custom-button custom-primary-button d-none d-md-block">
+                Submit
+            </button>
+
+        </div>
+    </main>
+</div>
+
+<main class="managed-sub-container" *ngIf="cartEmpty">
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart fa-5x" [style.color]="sharedservice.primarynaviconcolor"></i>
+        </div>
+        <!-- <h2 *ngIf="isSignalRConnected ">Connection Success</h2> -->
+
+        <h2 class=" text-center mt-3" [style.color]="sharedservice.primarybgcolor">Your Subscription is Empty
+        </h2>
+        <p class=" text-center mt-3" [style.color]="sharedservice.primarybgcolor">Add some items to your
+            Subscription to get started.</p>
+        <a href="/free-trial-select-wire" class="btn  mt-3" [style.color]="sharedservice.primarytextcolor"
+            [style.background-color]="sharedservice.primarybuttoncolor">Check Subscription</a>
+    </div>
+</main>
+
+
+
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="hideSubscribeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+        <h2>{{newData | titlecase}} Subscription Successful...!!</h2>
+        <p class="description">Enjoy your jounrey with us.</p>
+
+        <div class="action-buttons button-bottom-fixed my-3">
+            <a href="index" class="custom-button custom-secondary-button style-2">Get Started</a>
+        </div>
+    </div>
+</ng-template>

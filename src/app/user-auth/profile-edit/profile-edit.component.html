@@ -1,0 +1,56 @@
+<main class="top-spacing bottom-spacing profile-view edit">
+    <div class="container">
+        <div class="back-button"><img src="assets/images/arrow-left.svg" alt=""></div>
+        <div class="d-flex justify-content-between">
+            <h2>Profile</h2>
+            <button class="text-link" disabled>Save Changes</button>
+        </div>
+        <form class="form" #profileForm="ngForm">
+            <div class="avatar">{{ (userData.fname && userData.lname) ? userData.fname.charAt(0) +
+                userData.lname.charAt(0) : '' }}</div>
+            <div class="form-container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group pt-0">
+                            <label for="name">First Name</label>
+                            <input type="text" readonly id="fname" [ngModel]="userData.fname" class="form-control"
+                                name="fname">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group pt-0">
+                            <label for="name">Last Name</label>
+                            <input type="text" readonly id="lname" [ngModel]=" userData.lname" class="form-control"
+                                name="lname">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group pt-0">
+                            <label for="email">Email ID</label>
+                            <input type="text" readonly id="email" [ngModel]="userData.email_id" class="form-control"
+                                name="email">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group pt-0">
+                            <label for="mobile-number">Mobile Number</label>
+                            <input type="text" readonly id="mobile-number" [ngModel]="userData.mobile_no"
+                                class="form-control" placeholder="10-digit phone number" name="mobile-number">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group pt-0">
+                            <label for="city">City</label>
+                            <input type="text" id="city" [(ngModel)]="userData.city" class="form-control" name="city">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+        <div class="action-buttons fixed-bottom justify-content-end profile-desktop">
+            <button class="custom-button custom-primary-button" (click)="onSaveChanges(profileForm)">Save
+                Changes</button>
+        </div>
+    </div>
+</main>

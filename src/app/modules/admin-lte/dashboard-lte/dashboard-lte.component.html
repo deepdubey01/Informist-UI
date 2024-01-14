@@ -1,0 +1,81 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+
+  <nav class="navbar navbar-expand-sm bg-white shadow">
+
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="logout-container">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle> <span
+            class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+          <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg" style="width: 3rem;"></button>
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdown1">
+          <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+          <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="content">
+    <div class="row">
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h3>{{userCount}}</h3>
+            <p>All Users</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="admin/user-manage" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+
+        <div class="small-box bg-green">
+          <div class="inner">
+            <h3>{{packageCount}}</h3>
+            <p>All packages</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="admin/package-manage" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+
+        <div class="small-box bg-yellow">
+          <div class="inner">
+            <h3>44</h3>
+            <p>Paid User</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+          <a href="admin/user-manage" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+
+        <div class="small-box bg-red">
+          <div class="inner">
+            <h3>65</h3>
+            <p>Trial Users</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="admin/user-manage" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+</div>

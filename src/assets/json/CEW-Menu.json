@@ -1,0 +1,64 @@
+{
+    "Equity": [
+        {
+            "value": "Stocks to Watch",
+            "text": "Stocks to Watch:"
+        },
+        {
+            "value": "India Stocks",
+            "text": "India Stocks:"
+        },
+        {
+            "value": "India Stocks Outlook",
+            "text": "India Stocks Outlook:"
+        },
+        {
+            "value": "Earnings Outlook",
+            "text": "Earnings Outlook:"
+        },
+        {
+            "value": "Earnings Review",
+            "text": "Earnings Review:"
+        },
+        {
+            "value": "Bank Stocks",
+            "text": "Bank Stocks Outlook:"
+        },
+        {
+            "value": "Banking news",
+            "text": "W/I/BAN"
+        }
+    ],
+    "COMMODITY": [
+        {
+            "value": "Weather b/wea",
+            "text": "Q/B/WEA"
+        },
+        {
+            "value": "Policy",
+            "text": "1/G/POC"
+        },
+        {
+            "value": "Monsoon Watch",
+            "text": "Monsoon Watch:"
+        }
+    ],
+    "FUNDS": [
+        {
+            "value": "NFO",
+            "text": "[I] NFO:"
+        },
+        {
+            "value": "NFO Watch",
+            "text": "NFO Watch:"
+        },
+        {
+            "value": "NAV Watch",
+            "text": "NAV Watch:"
+        },
+        {
+            "value": "Fund Outlook",
+            "text": "Fund Outlook:"
+        }
+    ]
+}

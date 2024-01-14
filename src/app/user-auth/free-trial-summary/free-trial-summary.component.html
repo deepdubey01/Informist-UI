@@ -1,0 +1,252 @@
+<app-header></app-header>
+<main class="top-spacing bottom-spacing">
+  <div class="container">
+    <a class="back-button" *ngIf="issummaryType" href="free-trial-select-wire">
+      <img src="assets/images/arrow-left.svg" alt="">
+    </a>
+    <a class="back-button" *ngIf="!issummaryType" href="free-trial-product-topic">
+      <img src="assets/images/arrow-left.svg" alt="">
+    </a>
+
+  </div>
+  <div class="section-top-space free-trial-summary-section">
+    <div class="container">
+      <div class="title-wrap">
+        <h2>Review Your Selection </h2>
+        <div class="link-wrap desktop">
+          <a href="free-trial-product-topic" *ngIf="!issummaryType" class="text-link">Modify
+            Selection</a>
+          <a href="free-trial-select-wire" *ngIf=" issummaryType" class="text-link">Modify
+            Selection</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="selected-wire-list style2 ">
+          <div class="custom-card row">
+            <div class="selected-list-with-price col-lg-4 col-md-6 col-sm-12">
+              <div class="selection-title">
+                <span>Your selection</span>
+              </div>
+              <div class="main-title">
+                <div class="icon-wrap">
+                  <i><img src="images/diamond.svg" alt=""></i> {{package_name}} <span *ngIf="issummaryType">- Full
+                    Package</span>
+                </div>
+              </div>
+              <div
+                class="custom-scroll os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-overflow os-host-overflow-y">
+                <div class="os-resize-observer-host observed">
+                  <div class="os-resize-observer" style="left: 0px; right: auto;"></div>
+                </div>
+                <div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;">
+                  <div class="os-resize-observer"></div>
+                </div>
+                <div class="os-content-glue" style="margin: 0px -16px 0px 0px; width: 440px; height: 159px;"></div>
+                <div class="os-padding">
+                  <div
+                    class="os-viewport os-viewport-native-scrollbars-invisible os-viewport-native-scrollbars-overlaid"
+                    style="overflow-y: scroll;">
+                    <div class="os-content" style="padding: 0px 16px 0px 0px; height: 100%; width: 100%;">
+                      <div class="selected-topic-accordion style2">
+                        <div class="accordion-item pt-0" *ngFor="let topic of selectedTopics">
+                          <div class="accordion-header " (click)="toggleAccordion($event)">
+                            {{ topic.sub_package_name }} <span class="price">₹ {{topic.amount}} </span>
+                          </div>
+                          <div class="accordion-content" [style.display]="topic.expanded ? 'none' : 'block'">
+                            <div class="selected-topic-accordion" *ngFor="let subtopic of topic.categories">
+                              <div class="accordion-item">
+                                <div class=" accordion-header" (click)="toggleAccordion($event)">
+                                  {{ subtopic.category_name }}
+                                </div>
+                                <div class="accordion-content" [style.display]="topic.expanded ? 'block' : 'none'">
+                                  <ul class="sublist-level-one" *ngIf="topic.sub_package_type === 'DYNAMIC'">
+                                    <li *ngFor="let childSubtopic of selectedCompanies">
+                                      {{ childSubtopic.name }}
+                                    </li>
+                                  </ul>
+                                  <ul class="sublist-level-one" *ngIf="topic.sub_package_type !== 'DYNAMIC'">
+                                    <li *ngFor="let childSubtopic of subtopic.categories">
+                                      {{ childSubtopic.category_name }}
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable">
+                  <div class="os-scrollbar-track">
+                    <div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div>
+                  </div>
+                </div>
+                <div class="os-scrollbar-corner"></div>
+              </div>
+              <div class="final-calculation">
+                <div class="group">
+                  <label> Amount</label>
+                  <span class="price">{{ netAmount | currency: 'INR' }}</span>
+                </div>
+                <div class="group">
+                  <label>Discount</label>
+                  <span class="price">{{ afterdisAmount | currency: 'INR' }}</span>
+
+                </div>
+                <div class="group">
+                  <label>After Discount</label>
+                  <span class="price">{{ disAmount | currency: 'INR' }}</span>
+                </div>
+                <div class="group bnone">
+                  <label class="small">+GST 18%</label>
+                  <span class="price">{{ gstAmount | currency: 'INR' }}</span>
+                </div>
+                <div class="group">
+                  <label>Total Amount</label>
+                  <span class="price bold">{{ totalAmount | currency: 'INR' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="select-package col-lg-4  col-md-6 col-sm-12">
+
+              <span><b class="text-danger"> {{error_message | titlecase}} </b></span>
+              <div class="custom-radio mt-1">
+                <input type="radio" id="MONTHLY" value="MONTHLY" name="select-package" [(ngModel)]="selectedPackage"
+                  aria-selected="true" (change)="printPricingDetails(selectedPackage)">
+                <label for="MONTHLY" class="label-card-2">
+                  <span class="label-title">{{ monthlyPrice | currency: 'INR' }} / <span
+                      class="payment-mode">Month</span></span>
+                  <span class="label-description">Monthly <span style="font-size: inherit;"
+                      *ngIf="newtrialMode">Trial</span> Subscription</span>
+                  <div class="action-btns">
+                    <button type="button" (click)="openVerticallyCentered(content)"
+                      class="custom-button custom-primary-button">
+                      Add to Subscription!
+                    </button>
+                  </div>
+                </label>
+              </div>
+
+
+              <div class="custom-radio">
+                <input type="radio" id="QUARTERLY" [disabled]="newtrialMode" value="QUARTERLY" name="select-package"
+                  [(ngModel)]="selectedPackage" (change)="printPricingDetails(selectedPackage)">
+                <label for="QUARTERLY" class="label-card-2">
+                  <span class="label-title">{{ quarterlyPrice | currency: 'INR' }} / <span
+                      class="payment-mode">Quarter</span></span>
+                  <span class="label-description">Quarterly Subscription</span>
+                  <div class="action-btns">
+                    <button type="button" (click)="openVerticallyCentered(content)"
+                      class="custom-button custom-primary-button">
+                      Add to Subscription!
+                    </button>
+                  </div>
+                </label>
+              </div>
+
+
+
+              <div class="custom-radio">
+                <input type="radio" [disabled]="newtrialMode" id="YEARLY" value="YEARLY" name="select-package"
+                  [(ngModel)]="selectedPackage" (change)="printPricingDetails(selectedPackage)">
+                <label for="YEARLY" class="label-card-2">
+                  <span class="label-title">{{ yearlyPrice | currency: 'INR' }} / <span
+                      class="payment-mode">Year</span></span>
+                  <span class="label-description">Yearly
+                    Subscription</span>
+                  <div class="action-btns">
+                    <button type="button" (click)="openVerticallyCentered(content)"
+                      class="custom-button custom-primary-button">
+                      Add to Subscription!
+                    </button>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="modal fade" id="earning_season" #successModal [ngClass]="{'show': showSuccessModal}"
+      [style.display]="showSuccessModal ? 'block' : 'none'" tabindex="-1" role="dialog"
+      [attr.aria-hidden]="!showSuccessModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-style1">
+          <button type="button" class="custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><img
+              src="assets/images/close.svg" alt=""></button>
+          <div class="modal-body">
+            <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+            <h2>Package Added into Subscription</h2>
+            <div class="action-buttons button-bottom-fixed">
+              <a type="button" href="add-to-cart" class="custom-button custom-secondary-button style-2">Show Subscription</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+        <h2>Package Added into Subscription</h2>
+        <div class="action-buttons button-bottom-fixed my-3">
+          <a type="button" href="add-to-cart" class="custom-button custom-secondary-button style-2">Show
+            Subscription</a>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="modal fade" id="payment">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-style1">
+          <button type="button" class="custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><img
+              src="assets/images/close.svg" alt=""></button>
+          <div class="modal-body">
+            <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+            <h2>Payement: {{ this.responseData }}-/</h2>
+            <form action="">
+              <div class="form-group">
+                <label for="">Payment</label>
+                <input type="text" name="" id="" class="form-control" value="{{ this.responseData }}/" disabled
+                  aria-describedby="helpId">
+              </div>
+              <div class="form-group">
+                <label for="">Payment</label>
+                <input type="text" name="" id="" class="form-control" placeholder="UPI ID" aria-describedby="helpId">
+              </div>
+            </form>
+            <div class="action-buttons button-bottom-fixed">
+              <button type="button" class="custom-button custom-secondary-button style-2">Pay Now!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="paymentSuccess">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-content-style1">
+          <button type="button" class="custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><img
+              src="assets/images/close.svg" alt=""></button>
+          <div class="modal-body">
+            <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+            <h2>{{ this.responseData }}-/</h2>
+            <p class="description">Payment Successful</p>
+            <div class="action-buttons button-bottom-fixed my-3">
+              <button type="button" class="custom-button custom-secondary-button style-2" data-bs-toggle="modal"
+                data-bs-target="#freeTrialModal">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

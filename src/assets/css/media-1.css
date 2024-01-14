@@ -1,0 +1,518 @@
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+
+  nav.main-navigation {
+    width: 265px;
+    top: 60px;
+    padding: 16px;
+    border-radius: 16px 0px 0px 16px;
+    z-index: 999999;
+  }
+
+  nav.main-navigation ul li a {
+    padding: 20px 18px;
+  }
+
+  nav.main-navigation ul li.child a:nth-child(odd) {
+    padding-bottom: 15px;
+  }
+
+  nav.main-navigation ul li.child a:nth-child(even) {
+    padding-top: 15px;
+  }
+
+  nav.main-navigation ul li.child ul {
+    padding: 20px 20px;
+  }
+
+  nav.main-navigation ul li.child ul li {
+    border: 0px;
+  }
+
+  nav.main-navigation ul li.child ul:nth-child(odd) {
+    padding-bottom: 10px;
+  }
+
+  nav.main-navigation ul li.child ul:nth-child(even) {
+    padding-top: 10px;
+  }
+
+  nav.main-navigation ul li.submenu {
+    display: block;
+  }
+
+  nav.main-navigation .logout {
+    padding: 20px 36px;
+  }
+
+  /* Mobile Navigation:endss */
+  /* Data Section:starts */
+  .data-panel .data-list-section {
+    width: 100%;
+    background: #F2F8FF;
+  }
+
+  .data-panel .data-list-section .data-list-container {
+    padding: 16px 16px 70px 16px;
+  }
+
+  .data-panel .data-list-section .data-list-container .topbar {
+    padding-bottom: 16px;
+  }
+
+  .data-panel .data-list-section .data-list-container .topbar .inputwrap {
+    display: none;
+  }
+
+  .data-panel .data-list-section .custom-scroll {
+    height: calc(100vh - 182px);
+  }
+
+  .data-panel .data-view-section {
+    display: none;
+    width: 100%;
+  }
+
+  .data-panel .data-view-section iframe {
+    height: 100vh;
+  }
+
+  .data-panel .data-view-section #FullScreenView {
+    display: none;
+  }
+
+  .data-panel .data-view-section .top-panel h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .data-panel .data-view-section .top-panel img.leftarrow {
+    display: block;
+  }
+
+  .data-panel .news-categories {
+    padding-top: 0px;
+  }
+
+  .data-panel .news-categories .categories>li a {
+    min-width: auto;
+  }
+
+  .custom-accordion.custom-1 .custom-accordion-item {
+    background: transparent;
+    border-bottom-color: #ABB2BD;
+    border-radius: 0px;
+  }
+
+  .custom-accordion.custom-1 button {
+    padding: 10px 0px;
+  }
+
+  .custom-accordion .custom-accordion-button::after {
+    top: 20px;
+  }
+
+  /* Data Section:ends */
+  /*Managed Subscription:starts */
+  .managed-sub-container {
+    background: #F2F8FF;
+  }
+
+  .managed-sub-container .container {
+    background: #F2F8FF;
+  }
+
+  .managed-sub-container .back-button {
+    display: inherit;
+    margin-bottom: 12px;
+  }
+
+  .managed-sub-container .managed-subscription {
+    display: block;
+  }
+
+  .managed-sub-container .managed-subscription .main-title span {
+    font-size: 12px;
+    font-weight: 400;
+    color: #818790;
+  }
+
+  .managed-sub-container .managed-subscription .selected-topic-accordion,
+  .managed-sub-container .managed-subscription .main-title {
+    border-right: none;
+  }
+
+  .managed-sub-container .managed-subscription .selected-wire-list {
+    display: block;
+  }
+
+  .managed-sub-container .managed-subscription .selected-wire-list .custom-scroll {
+    height: 100%;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content {
+    margin: 16px 0px 0px 0px;
+    max-width: 100%;
+    padding: 0px;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .custom-card {
+    background: #D4E1F5;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .custom-card .mobile-links {
+    line-height: 28px;
+    display: inherit;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .custom-card .mobile-links a {
+    display: inline-block;
+    padding: 0px 16px;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .custom-card .mobile-links a:first-child {
+    padding-left: 0px;
+    border-right: 1px solid #BBCEEB;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .faq-container {
+    display: none;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing ul {
+    display: block;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing ul li {
+    margin-bottom: 25px;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing .sub-details-mob {
+    display: block;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing .sub-details-mob li {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing .sub-details-mob li img {
+    margin-right: 10px;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing .sub-details-mob li:last-child {
+    margin-bottom: 0px;
+  }
+
+  .managed-sub-container .managed-subscription .subscribe-content .sub-billing p {
+    display: none;
+  }
+
+  .managed-sub-container .action-button-1 {
+    padding: 16px;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .managed-sub-container .action-button-1 button {
+    padding: 0px 24px;
+    width: 100%;
+    margin: 0px;
+    justify-content: space-between;
+  }
+
+  .managed-sub-container .action-button-1 button img {
+    display: inherit;
+  }
+
+  /*Managed Subscription:starts */
+  /* Profile View Edit:starts*/
+  .profile-view {
+    padding-top: 20px;
+  }
+
+  .profile-view .avatar {
+    float: none;
+    margin: 0px auto;
+    width: 100px;
+    height: 100px;
+    font-size: 4.8rem;
+  }
+
+  .profile-view .form {
+    padding-top: 10px;
+  }
+
+  .profile-view .form-container {
+    float: none;
+    width: 100%;
+    padding: 20px 0px 120px 0px;
+  }
+
+  .profile-view .form-container .desktop-pf {
+    display: none;
+  }
+
+  .profile-view .form-container .profile-details {
+    display: block;
+    margin-bottom: 0px;
+  }
+
+  .profile-view .form-container .profile-details>div {
+    margin-bottom: 20px;
+  }
+
+  .profile-view .form-container .profile-details>div :last-child {
+    margin-bottom: 0px;
+  }
+
+  .profile-view .form-container .profile-details .labelValue {
+    font-size: 1.6rem;
+    line-height: 20px;
+  }
+
+  .profile-view button:disabled {
+    color: #ABB2BD;
+  }
+
+  .profile-view.edit .form-group {
+    margin-bottom: 24px;
+  }
+
+  .profile-view .profile-desktop {
+    display: none;
+  }
+
+  .profile-view .back-button {
+    display: inherit;
+    margin-bottom: 10px;
+  }
+
+  .mobile-menu {
+    z-index: 99999;
+  }
+
+  /* Profile View Edit:ends*/
+  /* Feedback Modal:starts */
+  .feedbackmodal .back-button {
+    display: inherit;
+    margin-bottom: 20px;
+  }
+
+  .feedbackmodal .modal-dialog {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .feedbackmodal .modal-content {
+    height: 100%;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .feedbackmodal .modal-footer {
+    padding-bottom: 40px;
+  }
+
+  /* Feedback Modal:endss */
+  /* New Post:starts */
+  .new-post-wrap {
+    padding: 28px;
+    height: calc(100vh - 60px);
+  }
+
+  .new-post-wrap button.submitpost {
+    width: 90%;
+    position: absolute;
+    bottom: 30px;
+    left: 5%;
+  }
+
+  /* New Post:ends */
+  /* Settings:starts */
+  .setting-wrap {
+    display: block;
+  }
+
+  .setting-wrap .back-button {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .setting-wrap .back-button img {
+    width: 18px;
+  }
+
+  .setting-wrap .news-list-section {
+    width: 100%;
+  }
+
+  .setting-wrap .news-list-section .news-list-container {
+    padding: 16px;
+  }
+
+  .setting-wrap .news-list-section .news-list-container .news-list {
+    padding-right: 0px;
+  }
+
+  .setting-wrap .wid100 {
+    width: 100%;
+  }
+
+  .setting-wrap .tab-cs {
+    font-size: 1.4rem;
+    padding: 12px 10px;
+    background: #D4E1F5;
+  }
+
+  .setting-wrap .tab-cs::after {
+    border: none;
+  }
+
+  .setting-wrap .tab-cs img.arrow {
+    margin-left: auto;
+  }
+
+  .setting-wrap .tab-cs.mobilest {
+    justify-content: space-between;
+    font-weight: 400;
+    padding-left: 16px;
+  }
+
+  .setting-wrap .news-list {
+    padding: 24px 0 0;
+  }
+
+  .setting-wrap .news-list h3 {
+    font-size: 1.4rem;
+  }
+
+  .setting-wrap .full-news-container {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .setting-wrap .full-news-container .customize-header {
+    display: inherit;
+  }
+
+  .setting-wrap .full-news-container .tabimage {
+    display: block;
+    margin: 20px auto 0px auto;
+  }
+
+  .setting-wrap .full-news-container .mobile-container {
+    background: #F2F8FF;
+    padding: 0px 12px;
+    height: 50vh;
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0;
+  }
+
+  .setting-wrap .full-news-container .mobile-container .hinttext {
+    border-top: 1px solid #ABB2BD;
+    font-size: 1.4rem;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .setting-wrap .full-news-container .custom-scroll {
+    height: calc(55vh - 60px);
+  }
+
+  .setting-wrap .full-news-container .toast-popup {
+    width: 85%;
+    padding: 15px 20px;
+  }
+
+  .setting-wrap .mobile-section {
+    display: inherit;
+  }
+
+  .setting-wrap .desktop-section {
+    display: none;
+  }
+
+  /* Settings:ends */
+  /* Search:starts */
+  .search-wrapper .search {
+    margin: 16px 0px;
+  }
+
+  .search-wrapper .search input {
+    padding: 12px 50px;
+  }
+
+  .search-wrapper .recent-search-pills ul {
+    flex-wrap: wrap;
+  }
+
+  .search-wrapper .recent-search-pills ul li {
+    margin-bottom: 8px;
+  }
+
+  /* Search:endss */
+  /* Community:starts */
+  .topsearchbar {
+    flex-direction: column-reverse;
+    padding-top: 10px;
+  }
+
+  .topsearchbar .searchbar {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .topsearchbar .searchbar input {
+    width: 100%;
+    height: 34px;
+  }
+
+  .topsearchbar .categories-wrap {
+    margin-right: auto;
+  }
+
+  .community-list ul li {
+    background: #FFFFFF;
+    margin-bottom: 16px;
+    border-radius: 16px;
+  }
+
+  .community-list ul li .follow-tag {
+    padding-top: 10px;
+  }
+
+  .community-list ul li .follow-tag ul li {
+    background: transparent;
+  }
+
+  .community-list.news-list li .nav-link.active {
+    background: #FFFFFF;
+  }
+
+  /* Community:endss */
+  /* Bookmark:starts */
+  .bookmark-list ul li {
+    border-bottom: 1px solid rgba(171, 178, 189, 0.5);
+  }
+
+  .bookmark-list ul li a.nav-link {
+    padding-left: 0px;
+  }
+
+  .bookmark-list ul li.active {
+    box-shadow: none;
+  }
+
+  /* Bookmark:ends */
+}
+
+/*# sourceMappingURL=media-1.css.map */

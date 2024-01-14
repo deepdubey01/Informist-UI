@@ -1,0 +1,63 @@
+<div class="modal-header">
+    <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+        (click)="closeModal()"></button>
+</div>
+<div class="modal-body">
+    <main>
+        <div class="news-panel setting-wrap">
+            <div class="news-list-section">
+                <div class="news-list-container">
+                    <div>
+                        <h2 class="d-flex justify-content-between">Settings <img src="assets/images/info.svg" alt="">
+                        </h2>
+                        <div class="news-list">
+                            <h3><img src="assets/images/notification.svg" alt=""> Login Setting</h3>
+                            <div [style.background-color]="sharedservice.primarybgcolor"
+                                [style.color]="sharedservice.primarytextcolor" class="custom-card tab-cs white">
+                                Auto Login
+                                <div [style.background-color]="sharedservice.primarybgcolor"
+                                    [style.color]="sharedservice.primarytextcolor"
+                                    class="toggle-switch toggle-switch-on-off">
+                                    <input type="checkbox" id="desktop-notification" name="desktop-notification">
+                                    <label for="desktop-notification" class="toggle">
+                                        <span class="toggle-button">
+                                            <span class="toggle_handler"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div [style.color]="sharedservice.primarytextcolor" class="sub-note">It'll allow to to auto
+                                login
+                                whenever you visit on website</div>
+                            <h3><img src="assets/images/higlighter.svg" alt=""> Select Theme</h3>
+                            <div [style.background-color]="sharedservice.primarybgcolor"
+                                [style.color]="sharedservice.primarytextcolor" class="custom-card tab-cs white p-0 ">
+
+                                <select name="selectedTheme" id="selectedTheme" class="form-control"
+                                    (change)="onThemeChange($event)">
+                                    <ng-container
+                                        *ngFor="let theme of ['Default', 'Light', 'Dark', 'Blue', 'Lightblue']">
+                                        <option [value]="theme"
+                                            [attr.selected]="theme === sharedservice.selectedTheme ? true : null">
+                                            {{ theme }}
+                                        </option>
+                                    </ng-container>
+                                </select>
+
+                            </div>
+
+
+                            <button type="button" (click)="applyTheme()"
+                                class="custom-button px-4 py-2 custom-primary-button d-none d-md-block mx-auto my-4"
+                                [style.background-color]="sharedservice.primarybuttoncolor"><span class=""
+                                    [style.color]="sharedservice.primarybuttontextcolor">Proceed </span></button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>

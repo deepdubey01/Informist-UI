@@ -1,0 +1,166 @@
+<section class="content p-0 m-0  layout2" id="layout2">
+    <div class="row m-0 p-0">
+        <div class="col-md-10 col-lg-12 m-0 p-0">
+            <div class="split-main-div">
+                <as-split direction="horizontal">
+                    <as-split-area [size]="50" [maxSize]="80">
+                        <as-split direction="vertical">
+                            <as-split-area [size]="50" [maxSize]="80">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-container table-responsive">
+                                            <table class="table table-bordered newsTable fixed-header ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Time</th>
+                                                        <th>
+                                                            {{newsTableheadline}}
+                                                            <div ngbDropdown class="float-end">
+                                                                <button class="btn"
+                                                                    [style.backgroundColor]="sharedservice.primarybuttoncolor"
+                                                                    [style.color]="sharedservice.primarybuttontextcolor"
+                                                                    (click)="openSearchPanel('newsTable', searchbox)">Filter</button>
+                                                            </div>
+
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <div id="loader" class="loader"></div>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </as-split-area>
+
+                            <as-split-area [size]="50" [maxSize]="80">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-container table-responsive">
+
+                                            <table class="table table-bordered newsTable2 fixed-header">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Time</th>
+                                                        <th>
+                                                            {{newsTableheadline2}}
+                                                            <div ngbDropdown class="float-end">
+                                                                <button class="btn"
+                                                                    [style.backgroundColor]="sharedservice.primarybuttoncolor"
+                                                                    [style.color]="sharedservice.primarybuttontextcolor"
+                                                                    (click)="openSearchPanel('newsTable2', searchbox)">Filter</button>
+                                                            </div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <div id="loader" class="loader"></div>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </as-split-area>
+                        </as-split>
+                    </as-split-area>
+                    <as-split-area [size]="50" [maxSize]="80" style="overflow: hidden;">
+
+                        <as-split direction="vertical" [maxSize]="80">
+                            <as-split-area [size]="50" [maxSize]="80">
+                                <div class="card h-100">
+                                    <div class="card-body scrollable-card-body">
+                                        <div class="news-details">
+                                            <div class="news-top-details">
+                                                <div class="back-button"><img src="assets/images/arrow-left.svg" alt="">
+                                                </div>
+
+                                            </div>
+                                            <div id="newsStoryPanel" class="newsStoryPanel p-2 w-100">
+                                                <div id="newsStoryContent" class="newsStoryContent"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </as-split-area>
+
+                            <as-split-area [size]="50" [maxSize]="80">
+                                <div class="card h-100">
+                                    <div class="card-body scrollable-card-body">
+                                        <div class="news-details">
+                                            <div class="news-top-details">
+
+                                            </div>
+                                            <div id="newsStoryPanel2" class="newsStoryPanel2 p-2 w-100">
+                                                <div id="newsStoryContent2" class="newsStoryContent2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </as-split-area>
+                        </as-split>
+                    </as-split-area>
+                </as-split>
+
+            </div>
+        </div>
+        <app-context-menu #contextMenu>
+        </app-context-menu>
+        <ng-template #inner>
+            <div class="example-menu" cdkMenu>
+                <button class="example-menu-item" cdkMenuItem>Cut</button>
+                <button class="example-menu-item" cdkMenuItem>Copy</button>
+                <button class="example-menu-item" cdkMenuItem>Paste</button>
+            </div>
+        </ng-template>
+    </div>
+</section>
+
+
+
+<ng-template #searchbox let-modal>
+    <div class="modal-header">
+        <!-- <h4 class="modal-title">Search Here......</h4> -->
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body profile-body">
+        <form #filteredForm="ngForm" (ngSubmit)="onFilteredNews(filteredForm)">
+            <div class="row main-filter-panel filter-panel">
+                <div class="col-md-2 my-2">
+                    <div class="form-group">
+                        <select class="form-select search-control" name="mainwire" id="mainwire" [(ngModel)]="mainwire"
+                            ngModel required (ngModelChange)="onHeadlineChange($event)">
+                            <option [value]="allWirePackageCodes" disabled>
+                                All wire
+                            </option>
+                            <option *ngFor="let wires of wirePermission" value="{{wires.subpackagecode}}"
+                                [selected]="mainwire === '{{wires.subpackagecode}}'">
+                                {{wires.sub_package_name}}</option>
+                            <!-- <option value="CMW" [selected]="mainwire === 'CMW'">Money Wire</option>
+                            <option value="CEW" [selected]="mainwire === 'CEW'">Equity Wire</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class=" col my-2">
+                    <div class="form-group">
+                        <button type="submit" class=" form-control shadow search-control p-0"
+                            [style.background-color]="sharedservice.primarybgcolor"
+                            [style.color]="sharedservice.primarytextcolor">Search</button>
+                    </div>
+                </div>
+                <div class="col my-2">
+                    <div class="form-group">
+                        <input type="reset" name="" id=""
+                            class="form-control search-control shadow bg-danger text-white btn-danger p-0"
+                            value="Reset">
+                    </div>
+                </div>
+            </div>
+
+            <span class="text-danger">{{errorMessage}}</span>
+        </form>
+
+    </div>
+</ng-template>

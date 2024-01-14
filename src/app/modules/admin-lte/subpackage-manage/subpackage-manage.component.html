@@ -1,0 +1,128 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper" style="min-height: 918px;">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Subpackage Manage
+            <small>List</small>
+        </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                            <div class="card shadow text-left">
+                                <div class="card-header">
+                                    <span>Subpackage Data</span>
+                                    <div class="text-end my-2">
+                                        <a href="admin/add-subpackage?package_id={{package_id}}"
+                                            class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4">
+                                            <i class="fa fa-plus text-white" aria-hidden="true"></i>
+                                            Add Subpackage
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th> Sr. no</th>
+                                                    <th>Subpackage</th>
+                                                    <th>Amount</th>
+                                                    <th>Created At</th>
+                                                    <th> Categories</th>
+                                                    <th>Edit</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let user of users; let i = index;">
+                                                    <td> {{i+1}} </td>
+                                                    <td>{{user.sub_package_name}}</td>
+                                                    <td>{{user.amount}}</td>
+                                                    <td> {{user.updated_at}} </td>
+                                                    <td class="center">
+                                                        <a href="admin/categories-manage?subpackage_id={{user.sub_package_id}}"
+                                                            class="badge  bg-primary">
+                                                            View
+                                                        </a>
+                                                    </td>
+                                                    <td class="center">
+                                                        <a class="badge bg-warning"
+                                                            href="admin/add-subpackage?package_id={{package_id}}&sub_package_id={{user.sub_package_id}}">
+                                                            Edit
+                                                        </a>
+                                                    </td>
+                                                    <td class="center">
+                                                        <span [ngClass]="getStatusClass(user.status)"
+                                                            (click)="printStatus(user.sub_package_id, user.status)">{{user.status}}</span>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <ng-template #noDataFound>
+                                <!-- Render "No Data Found" message when users is a string -->
+                                <p>No data available in table</p>
+                            </ng-template>
+                            <!-- <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="example1_info">Showing 1 to 10 of 57 entries</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="dataTables_paginate paging_bootstrap">
+                                        <ul class="pagination">
+                                            <li class="prev disabled"><a href="#">← Previous</a></li>
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li class="next"><a href="#">Next → </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

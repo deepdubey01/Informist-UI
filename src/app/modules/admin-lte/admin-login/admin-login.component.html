@@ -1,0 +1,28 @@
+<main class="top-spacing bottom-spacing-2">
+    <div class="login-section">
+        <div class="container">
+            <div class="form-container">
+                <div *ngIf="!showLoginForm" class="">
+                    <form class="form" #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)">
+                        <h2>Admin Login here..!!</h2>
+
+                        <div class="form-group p-0">
+                            <input type="email" id="phone" [maxlength]="45" [(ngModel)]="username"
+                                class="form-control my-2" placeholder="Email" name="username" ngModel required>
+
+                            <input type="password" id="password" [maxlength]="15" [(ngModel)]="password"
+                                class="form-control my-2" placeholder="Enter Your Password" name="password" ngModel
+                                required>
+                            <a href="admin/admin-forgot-password" class="float-end">Forgot Password?</a>
+                            <b *ngIf="errorMessage" class="error-message text-danger">{{ errorMessage }}</b>
+                        </div>
+
+                        <div class="action-buttons button-bottom-fixed">
+                            <button type="submit" class="custom-button custom-primary-button">Login</button> <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

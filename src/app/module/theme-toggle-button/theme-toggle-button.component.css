@@ -1,0 +1,16 @@
+/* theme-toggle-button.component.css */
+.theme-toggle-button-container {
+    display: flex;
+    justify-content: flex-end;
+    /* Align to the right */
+    padding: 10px;
+    /* Optional: Add some padding */
+}
+
+.theme-toggle-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}

@@ -1,0 +1,492 @@
+<mat-sidenav-container>
+  <header class=" shadow-sm header-2 " [style.background-color]="sharedservice.primarybgcolor"
+    [style.color]="sharedservice.primarytextcolor">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg header-container nav py-3">
+        <div class="container">
+          <a class="navbar-brand " href="index" *ngIf="isUserLoggedIn">
+            <img style="width: 120px;" [src]="sharedservice.PrimaryLogo" alt="INFORMIST">
+          </a>
+          <mat-toolbar class="mat-elevation-z8" *ngIf="isHomePage">
+            <div class="sidebar-button-container" [class.opened]="sidenav.opened">
+              <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+                <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+              </button>
+            </div>
+          </mat-toolbar>
+          <a class="navbar-brand " href="#" *ngIf="!isUserLoggedIn">
+            <img style="width: 120px;" [src]="sharedservice.PrimaryLogo" alt="INFORMIST">
+          </a>
+          <button class="navbar-toggler" style="background-color: #f0f8ff;" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon bord"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item header-text mx-2 p-0" style="color: #000;" *ngIf="!isUserLoggedIn && isLoginPage">
+                <a class="nav-link" href="/login">Login</a>
+
+              <li class="nav-item header-text mx-2 my-auto" *ngIf="!isUserLoggedIn && isdashboard">
+                <a class="nav-link btn bg-primary  " style="padding: 6px;" href="/signup">Create new
+                  account</a>
+              </li>
+
+
+              <div class="topbar-divider d-none d-sm-block" *ngIf="isUserLoggedIn && isRealLoginPage"></div>
+              <li class="nav-item " *ngIf="isUserLoggedIn">
+                <div ngbDropdown class="d-inline-block">
+                  <a type="button" class=" navbar-text logoutBtn mx-2 " role="button" id="dropdown1" ngbDropdownToggle>
+                    <i [style.color]="sharedservice.primarytextcolor" class="fa fa-user-circle " aria-hidden="true"></i>
+                  </a>
+                  <div ngbDropdownMenu aria-labelledby="dropdown1" class="p-3">
+                    <a class="dropdown-item" (click)="profileOpen(profile)">
+                      Profile</a>
+                    <a class="dropdown-item" (click)="subscriptionOpen(subscription)">
+                      My Subscription</a>
+                    <a class="dropdown-item" (click)="changePasswordOpen()">
+                      Change Password</a>
+                    <a class="dropdown-item" (click)="open()">
+                      Setting</a>
+                    <a class="dropdown-item" href="javascript:void(0);" (click)="logout()">
+                      Log Out</a>
+                  </div>
+                </div>
+              </li>
+
+              <li class="nav-item" *ngIf="!isUserLoggedIn && !isRealLoginPage">
+                <a href="/login" [style.color]="sharedservice.primarytextcolor" lass="nav-link">
+                  <span class="  h1 px-2 mx-2">Login</span>
+                </a>
+              </li>
+
+              <li class="nav-item" *ngIf="!isUserLoggedIn && !isRealLoginPage">
+                <a href="/signup" class="nav-link btn bg-info  ">
+
+                  <span class=" h1 px-2 mx-2">SignUp</span>
+                </a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <mat-toolbar class="mat-elevation-z8 float-end" style="top: 0;
+    position: absolute;
+    right: 0;" *ngIf="isUserLoggedIn">
+      <div class="sidebar-button-container" [class.opened]="sidenav.opened">
+        <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+    <a class="navbar-brand " href="index" *ngIf="isUserLoggedIn">
+      <img style="width: 120px;" src="assets/images/informist-text-logo.svg" alt="INFORMIST">
+    </a>
+
+    <mat-divider></mat-divider>
+    <div *ngIf="!isUserLoggedIn">
+      <button mat-button class="menu-button" routerLink="/login">
+        <mat-icon>home</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/signup">
+        <mat-icon>person</mat-icon>
+        <span>Signup</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </div>
+    <div *ngIf="isUserLoggedIn">
+      <button mat-button class="menu-button" routerLink="/home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/about">
+        <mat-icon>info</mat-icon>
+        <span>About</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/help">
+        <mat-icon>help</mat-icon>
+        <span>Help</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+</mat-sidenav-container>
+
+
+
+
+
+
+<ng-template #subscription let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <main class=" managed-sub-container">
+      <div class=" container">
+        <h2 id="manag-heading-1">Manage Subscription</h2>
+        <h2 id="manag-heading-2" class="mobile-text">Subscription Details</h2>
+        <div *ngIf="subscribeResponseData">
+
+          <div class="managed-subscription" *ngFor="let paidtopic of subscribeResponseData">
+            <div id="SubscriptionDetails" class="selected-wire-list" *ngFor="let packages of paidtopic.packages">
+              <div class="main-title text-capitalize"> <i><img src="assets/images/diamond.svg" alt=""></i>
+                {{packages.package_name}}
+                <p> <i [style.color]="sharedservice.primarytextcolor" class="fas fa-ballot-check"></i> <b>Expiry Date:
+                  </b>
+                  {{packages.subscription_until | date}}
+                </p>
+
+              </div>
+              <div class="custom-scroll">
+                <div class="selected-topic-accordion">
+                  <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                    <div class="accordion-header" (click)="toggleAccordion($event)">
+                      {{subPackages.sub_package_name}}
+                    </div>
+                    <div class="accordion-content" [style.display]="subPackages.expanded ? 'block' : 'none'">
+                      <div class="selected-topic-accordion">
+                        <div class="accordion-item" *ngFor="let categories of subPackages.categories">
+                          <div class="accordion-header" (click)="toggleAccordion($event)">
+                            {{categories.category_name}}
+                          </div>
+                          <div class="accordion-content" [style.display]="categories.expanded ? 'none' : 'block'">
+                            <ul class="sublist-level-one">
+                              <li *ngFor="let categories of categories.categories">
+                                {{categories.category_name}}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="SubscriptionContent" class="subscribe-content">
+                <div class="custom-card sub-billing">
+                  <ul>
+                    <li>Total billing<span>₹{{paidtopic.subscription_amount | number}} </span></li>
+                    <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+
+                  </ul>
+                  <ul class="sub-details-mob">
+                    <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+                    <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+                    <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+                  </ul>
+                  <p>Your payment will be automatically renewed</p>
+                  <p>Amount inclusive of GST</p>
+                  <div class="mobile-links">
+                    <a [style.color]="sharedservice.primarytextcolor" href="javascript:;" class="text-link">View
+                      details</a> <a [style.color]="sharedservice.primarytextcolor" href="javascript:;"
+                      class="text-link" id="EditBtnSubscripion">Edit Subscription</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="managed-subscription" *ngFor="let paidtopic of subscribetrialResponseData">
+            <div id="SubscriptionDetails" class="selected-wire-list" *ngFor="let packages of paidtopic.packages">
+              <div class="main-title"> <i><img src="assets/images/diamond.svg" alt=""></i>
+                {{packages.package_name}}
+                <span class="d-sm-block d-md-none">67/70 Sub - sub Topics</span>
+              </div>
+              <div class="custom-scroll">
+                <div class="selected-topic-accordion">
+                  <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                    <div class="accordion-header">
+                      {{subPackages.sub_package_name}}
+                    </div>
+                    <div class="accordion-content">
+                      <div [style.background-color]="sharedservice.primarybgcolor"
+                        [style.color]="sharedservice.primarytextcolor" class="selected-topic-accordion">
+                        <div [style.background-color]="sharedservice.primarybgcolor"
+                          [style.color]="sharedservice.primarytextcolor" class="accordion-item"
+                          *ngFor="let categories of subPackages.categories">
+                          <div [style.background-color]="sharedservice.primarybgcolor"
+                            [style.color]="sharedservice.primarytextcolor" class="accordion-header">
+                            {{categories.category_name}}
+                          </div>
+                          <div [style.background-color]="sharedservice.primarybgcolor"
+                            [style.color]="sharedservice.primarytextcolor" class="accordion-content">
+                            <ul class="sublist-level-one">
+                              <li *ngFor="let categories of categories.categories">
+                                {{categories.category_name}}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="SubscriptionContent" class="subscribe-content">
+              <div class="custom-card sub-billing">
+                <ul>
+                  <li>Annual billing<span>₹{{paidtopic.total_amount}} </span></li>
+                  <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+                </ul>
+                <ul class="sub-details-mob">
+                  <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+                  <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+                  <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+                </ul>
+                <p>Your payment will be automatically renewed</p>
+                <p>Amount inclusive of GST</p>
+                <div class="mobile-links">
+                  <a [style.color]="sharedservice.primarytextcolor" href="javascript:;" class="text-link">View
+                    details</a>
+                  <a [style.color]="sharedservice.primarytextcolor" href="javascript:;" class="text-link"
+                    id="EditBtnSubscripion">New
+                    Subscription</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="action-buttons action-button-1 fixed-bottom d-flex justify-content-end" id="action-manage-sub">
+        <a [style.color]="sharedservice.primarytextcolor" type="button" href="free-trial-select-wire"
+          class="custom-button px-4 py-2 custom-primary-button d-none d-md-block"
+          [style.background-color]="sharedservice.primarybgcolor"><span class=""
+            [style.color]="sharedservice.primarytextcolor">Add
+            More
+            Subscription</span></a>
+      </div>
+    </main>
+
+    <main class="top-spacing managed-sub-container" *ngIf="cartEmpty">
+      <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="text-center">
+          <i [style.color]="sharedservice.primarytextcolor" class="far fa-frown fa-5x text-danger"></i>
+        </div>
+        <h2 class="text-danger text-center mx-auto mt-3">Oops! You haven't subscribed to any package yet.</h2>
+        <p class="text-secondary text-center mt-3">Browse our packages and find the perfect one for you.</p>
+        <a [style.color]="sharedservice.primarytextcolor" href="free-trial-select-wire"
+          class="btn btn-primary mt-3">Browse
+          Packages</a>
+      </div>
+    </main>
+
+  </div>
+</ng-template>
+
+<ng-template #profile let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body profile-body">
+    <main class=" bottom-spacing profile-view">
+      <div class="container">
+
+        <div class="d-flex justify-content-between">
+          <h2>Profile</h2>
+
+        </div>
+        <div class="form ">
+          <div class="avatar">{{
+            userData.fname.charAt(0) }}{{ userData.lname.charAt(0) }}
+          </div>
+          <div class="form-container ">
+            <div class="profile-details">
+              <div class="form-group pt-0 desktop-pf">
+                <label for="name">Name</label>
+                <div class="labelValue">{{userData.fname}} {{userData.lname}} </div>
+              </div>
+              <div class="form-group pt-0">
+                <label for="name">Phone Number</label>
+                <div class="labelValue">{{userData.mobile_no}}</div>
+              </div>
+              <div class="form-group pt-0">
+                <label for="name">Email ID</label>
+                <div class="labelValue">{{userData.email_id}}</div>
+              </div>
+            </div>
+            <div class="profile-details">
+              <div class="form-group pt-0">
+                <label for="name">City</label>
+                <div class="labelValue">{{userData.city}}</div>
+              </div>
+              <div class="form-group pt-0">
+                <label for="name">Country</label>
+                <div class="labelValue"><img src="assets/images/flags/india.svg" alt=""> India</div>
+              </div>
+            </div>
+          </div>
+          <div class="action-buttons action-button-1 fixed-bottom-3 d-flex justify-content-end">
+            <button (click)="EditProfileOpen(profileEdit)" class="custom-button custom-primary-button">Update
+              profile</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</ng-template>
+
+<ng-template #profileEdit let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body profile-body">
+    <main class="top-spacing bottom-spacing profile-view edit">
+      <div class="container">
+        <div class="back-button"><img src="assets/images/arrow-left.svg" alt=""></div>
+        <div class="d-flex justify-content-between">
+          <h2>Update Profile</h2>
+
+        </div>
+        <form class="form" #profileForm="ngForm">
+          <div class="avatar">{{
+            (userData.fname && userData.lname) ? userData.fname.charAt(0) +
+            userData.lname.charAt(0) : '' }}</div>
+          <div class="form-container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="name">First Name</label>
+                  <input type="text" readonly id="fname" [ngModel]="userData.fname" class="form-control" name="fname">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="name">Last Name</label>
+                  <input type="text" readonly id="lname" [ngModel]=" userData.lname" class="form-control" name="lname">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="email">Email ID</label>
+                  <input type="text" readonly id="email" [ngModel]="userData.email_id" class="form-control"
+                    name="email">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="mobile-number">Mobile Number</label>
+                  <input type="text" readonly id="mobile-number" [ngModel]="userData.mobile_no" class="form-control"
+                    placeholder="10-digit phone number" name="mobile-number">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="city">City</label>
+                  <input type="text" id="city" [(ngModel)]="userData.city" class="form-control" name="city">
+                </div>
+              </div>
+              <div class="col-md-4 my-auto">
+                <div class="row">
+                  <div class="col-md-6"> <button class="custom-button-2 profile-edit-button"
+                      (click)="onSaveChanges(profileForm)">Save
+                      Changes</button></div>
+                  <div class="col-md-6">
+                    <button class="custom-button-2 profile-edit-button"
+                      (click)="modal.dismiss('Cross click')">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </main>
+  </div>
+</ng-template><ng-template #profileEdit let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+      (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body profile-body">
+    <main class="top-spacing bottom-spacing profile-view edit">
+      <div class="container">
+        <div class="back-button"><img src="assets/images/arrow-left.svg" alt=""></div>
+        <div class="d-flex justify-content-between">
+          <h2>Update Profile</h2>
+
+        </div>
+        <form class="form" #profileForm="ngForm">
+          <div class="avatar">{{
+            (userData.fname && userData.lname) ? userData.fname.charAt(0) +
+            userData.lname.charAt(0) : '' }}</div>
+          <div class="form-container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="name">First Name</label>
+                  <input type="text" readonly id="fname" [ngModel]="userData.fname" class="form-control" name="fname">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="name">Last Name</label>
+                  <input type="text" readonly id="lname" [ngModel]=" userData.lname" class="form-control" name="lname">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="email">Email ID</label>
+                  <input type="text" readonly id="email" [ngModel]="userData.email_id" class="form-control"
+                    name="email">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="mobile-number">Mobile Number</label>
+                  <input type="text" readonly id="mobile-number" [ngModel]="userData.mobile_no" class="form-control"
+                    placeholder="10-digit phone number" name="mobile-number">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group pt-0">
+                  <label for="city">City</label>
+                  <input type="text" id="city" [(ngModel)]="userData.city" class="form-control" name="city">
+                </div>
+              </div>
+              <div class="col-md-4 my-auto">
+                <div class="row">
+                  <div class="col-md-6"> <button class="custom-button-2 profile-edit-button"
+                      (click)="onSaveChanges(profileForm)">Save
+                      Changes</button></div>
+                  <div class="col-md-6">
+                    <button class="custom-button-2 profile-edit-button"
+                      (click)="modal.dismiss('Cross click')">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</ng-template>

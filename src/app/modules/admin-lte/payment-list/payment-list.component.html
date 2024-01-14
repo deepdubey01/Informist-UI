@@ -1,0 +1,155 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content">
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Payment List</span>
+                        <div class="text-end my-2">
+                            <!-- <button class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4">
+                                <i class="fa fa-file-download mx-2"></i>Proceed
+                            </button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. no</th>
+                                            <th>Transaction ID</th>
+                                            <th>URN/Reference ID</th>
+                                            <th>Amount</th>
+                                            <th>User ID</th>
+                                            <th>Subscription ID</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>TRX001</td>
+                                            <td>PRN001</td>
+                                            <td>₹1000000.00</td>
+                                            <td>01</td>
+                                            <td>001</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>TRX002</td>
+                                            <td>PRN002</td>
+                                            <td>₹500000.00</td>
+                                            <td>02</td>
+                                            <td>002</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>TRX003</td>
+                                            <td>PRN003</td>
+                                            <td>₹750000.00</td>
+                                            <td>03</td>
+                                            <td>003</td>
+                                            <td><span class="badge bg-danger">Failed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>TRX004</td>
+                                            <td>PRN004</td>
+                                            <td>₹1200000.00</td>
+                                            <td>04</td>
+                                            <td>004</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>TRX005</td>
+                                            <td>PRN005</td>
+                                            <td>₹900000.00</td>
+                                            <td>05</td>
+                                            <td>005</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>TRX006</td>
+                                            <td>PRN006</td>
+                                            <td>₹600000.00</td>
+                                            <td>06</td>
+                                            <td>006</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>TRX007</td>
+                                            <td>PRN007</td>
+                                            <td>₹450000.00</td>
+                                            <td>07</td>
+                                            <td>007</td>
+                                            <td><span class="badge bg-danger">Failed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>TRX008</td>
+                                            <td>PRN008</td>
+                                            <td>₹800000.00</td>
+                                            <td>08</td>
+                                            <td>008</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>TRX009</td>
+                                            <td>PRN009</td>
+                                            <td>₹300000.00</td>
+                                            <td>09</td>
+                                            <td>009</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>TRX010</td>
+                                            <td>PRN010</td>
+                                            <td>₹1100000.00</td>
+                                            <td>10</td>
+                                            <td>010</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>

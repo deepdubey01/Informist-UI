@@ -1,0 +1,171 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Categories Manage
+            <small>List</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+
+                            <div class="card shadow">
+                                <div class="card-header">
+                                    <span>Categories</span>
+                                    <div class="mx-auto my-2 float-end">
+                                        <a href=" admin/add-categories?subpackage_id={{subpackage_id}}"
+                                            class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4">
+                                            <i class="fa fa-plus text-white" aria-hidden="true"></i>
+                                            Add Categories
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr.no</th>
+                                                    <th>Categories Name</th>
+                                                    <th>Categories Code</th>
+                                                    <th>Amount</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody *ngIf="users.length > 0; else noDataFound">
+                                                <ng-container *ngFor="let user of users; let i = index;">
+
+                                                    <tr>
+                                                        <td>
+                                                            {{i+1}}
+                                                        </td>
+                                                        <td>
+                                                            <ng-container
+                                                                *ngIf="user.categories.length > 0; else disabledLink">
+                                                                <a (click)="toggleSubtable(user)"
+                                                                    style="cursor: pointer;">
+                                                                    {{ user.category_name }}
+                                                                    <i
+                                                                        [class]="user.showSubtable ? 'fas fa-caret-up' : 'fas fa-caret-down'"></i>
+                                                                </a>
+                                                            </ng-container>
+                                                            <ng-template #disabledLink>
+                                                                <span>
+                                                                    {{ user.category_name }}
+                                                                </span>
+                                                            </ng-template>
+                                                        </td>
+                                                        <td>
+                                                            {{user.category_code}}
+                                                        </td>
+                                                        <td>₹{{ user.amount }}/-</td>
+
+
+                                                        <td>
+                                                            <a class="badge bg-warning"
+                                                                href="
+                                                            admin/add-categories?subpackage_id={{subpackage_id}}&category_id={{user.category_id}}">
+                                                                Edit</a>
+                                                        </td>
+
+
+                                                    </tr>
+                                                    <!-- Subtable for categories -->
+                                                    <tr *ngIf="user.showSubtable">
+                                                        <td colspan="5">
+                                                            <table class="subtable table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sr.no</th>
+                                                                        <th>Subcategories
+                                                                        </th>
+                                                                        <th>Category Code
+                                                                        </th>
+                                                                        <th>Edit</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr
+                                                                        *ngFor="let category of user.categories; let i = index;">
+                                                                        <td> {{i+1}} </td>
+                                                                        <td>{{
+                                                                            category.category_name }}
+                                                                        </td>
+                                                                        <td>{{
+                                                                            category.category_code }}
+                                                                        </td>
+                                                                        <td> <a class="badge bg-warning"
+                                                                                href="admin/add-categories?subpackage_id={{subpackage_id}}&category_id={{category.category_id}}">
+                                                                                Edit</a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </ng-container>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <ng-template #noDataFound>
+                                <!-- Render "No Data Found" message when users is a string -->
+                                <p>No Data Found</p>
+                            </ng-template>
+                            <!-- <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="example1_info">Showing 1 to 10 of 57 entries</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="dataTables_paginate paging_bootstrap">
+                                        <ul class="pagination">
+                                            <li class="prev disabled"><a href="#">← Previous</a></li>
+                                            <li class="active"><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li class="next"><a href="#">Next → </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,20 @@
+.form-control {
+  position: relative;
+  overflow: visible;
+}
+
+/*
+:host /deep/ .ng-select {} */
+
+:host /deep/ .ng-dropdown-panel {
+  position: relative;
+}
+
+:host /deep/ .ng-dropdown-panel .scroll-host {
+  background-color: white;
+}
+
+:host /deep/ .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+  border: 1px solid;
+  padding: 8px;
+}

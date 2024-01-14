@@ -1,0 +1,49 @@
+<app-header></app-header>
+<main class="top-spacing bottom-spacing">
+  <div class="container">
+  </div>
+  <div class="section-top-space free-trial-section">
+    <div class="container">
+      <h2 *ngIf="ispaid" class="small">Congratulations!<br>
+        Your initial month on Informist comes at a cost</h2>
+      <p *ngIf="ispaid" class="description small">Select the news packages you'd like to include in your subscription.
+      </p>
+      <h2 *ngIf="!ispaid" class="small">Congratulations!<br>
+        Your first 30 days on Informist, are FREE!</h2>
+      <p *ngIf="!ispaid" class="description small">Select the news packages you would like to include in your 30-days
+        trial</p>
+      <div class="select-wire">
+        <div class="custom-radio-section custom-radio-inline row" *ngIf="activeData.length > 0">
+          <div class="custom-radio col-md-4 col-lg-4 col-sm-12" *ngFor="let item of activeData; let i = index;">
+            <input type="radio" [id]="item.package_name" value="{{item.package_name}}" name="select-wire">
+            <label [for]="item.package_name" class="label-card">
+              <span class="label-title">{{item.package_name}}</span>
+              <span class="label-description main-description">{{item.description}}</span>
+              <span class="label-description price-range-text">Price Range: <span class="bold">₹{{
+                  item.part_service_month }} - ₹{{ item.full_service_month
+                  }}</span> per
+                month</span>
+              <div class="icon">
+                <img src="assets/images/diamond.svg" alt="">
+              </div>
+              <div class="action-btns">
+                <a class="custom-button custom-primary-button" (click)="redirectToNextPage(item, 'FULL')">
+                  <span class="service">Full Service</span>
+                  <span class="price">{{ item.full_service_month}}/month</span>
+                </a>
+                <a class="custom-button custom-primary-button mLeft" (click)="redirectToNextPage(item, 'AL_CARTE')">
+                  <span class="service">More Packages</span>
+                  <!-- <span class="price">Min. ₹{{item.part_service_month }}/month</span> -->
+                </a>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="note button-bottom-fixed">
+        Not sure which news package is right for you? <a (click)="scheduleCallBack()" class="text-link">Request a Call
+          Back</a> <img src="assets/images/arrow-next.svg" alt="">
+      </div>
+    </div>
+  </div>
+</main>

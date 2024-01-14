@@ -1,0 +1,113 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Add Subpackage
+        </h1>
+    </section>
+    <section class="content">
+        <div class="card text-left">
+
+            <div class="card-body shadow">
+                <div class="container">
+                    <div class="row">
+                        <form action="" class="form p-2 " #addPackageForm="ngForm"
+                            (ngSubmit)="addOrUpdateSubPackage(addPackageForm)">
+                            <div *ngFor="let subpackage of subpackages; let i = index" class="row mb-2">
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="sub_package_name">Subpackage Name</label>
+                                        <input type="text" name="sub_package_name" maxlength="50"
+                                            [(ngModel)]="subpackage.sub_package_name" id="sub_package_name"
+                                            class="form-control" placeholder="Subpackage Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="amount">Amount</label>
+                                        <input type="number" name="amount" maxlength="20"
+                                            [(ngModel)]="subpackage.amount" id="amount" class="form-control"
+                                            placeholder="0.00" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="sub_package_code">Code</label>
+                                        <input type="text" name="sub_package_code" maxlength="20"
+                                            [(ngModel)]="subpackage.sub_package_code" id="sub_package_code"
+                                            class="form-control" placeholder="Subpackage code" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="description">Description</label>
+                                        <input type="text" name="description" maxlength="200"
+                                            [(ngModel)]="subpackage.description" id="description" class="form-control"
+                                            placeholder="Enter description" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="status">Subpackage Status</label>
+                                        <select name="status" [(ngModel)]="subpackage.status" id="status"
+                                            class="form-control">
+                                            <option value="ACTIVE">ACTIVE</option>
+                                            <option value="INACTIVE">INACTIVE</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="status">Subpackage Type</label>
+                                        <select name="sub_package_type" [(ngModel)]="subpackage.sub_package_type"
+                                            id="sub_package_type" class="form-control">
+                                            <option value="STATIC">STATIC</option>
+                                            <option value="DYNAMIC">DYNAMIC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-3 addRowBtn mt-lg-5 pt-lg-4">
+                                <button class="btn btn-danger" type="button" (click)="removeSubpackage(i)">Remove</button>
+                            </div> -->
+                            </div>
+
+                            <div class="row">
+                                <span class="text-danger"> {{error_message}} </span>
+                                <div class="col-lg-4">
+                                    <button class="btn btn-info submitFormbtn" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        <p>{{successMessage}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

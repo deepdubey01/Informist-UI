@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>
+    <mat-icon class="check-icon" color="primary">done</mat-icon>
+    Request has approved
+</h1>
+<div mat-dialog-content class="message-content">
+    {{ data.message }}
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="'OK'">OK</button>
+</div>

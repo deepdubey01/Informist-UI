@@ -1,0 +1,114 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="card shadow">
+                    <div class="card-header">
+                        Susbcrption List
+                    </div>
+                    <div *ngIf="subscriptionData.length > 0; else noDataMessage">
+                        <div class="card-body p-2" *ngFor="let subscription of subscriptionData; let i = index;">
+                            <h2> {{i+1}}. Package</h2>
+                            <div class="row my-2" *ngFor="let package of subscription.packages">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Package Name</label>
+                                        <input type="text" class="form-control" [value]="package.package_name" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Expiry Date</label>
+                                        <input type="text" class="form-control"
+                                            [value]="package.subscription_until | date" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Total Amount</label>
+                                        <input type="text" class="form-control" [value]="'₹ ' + package.total_amount"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="">Package Type</label>
+                                        <input type="text" class="form-control" [value]="package.package_type" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-3 my-2"
+                                    *ngFor="let subpackage of package.sub_packages; let a= index;">
+                                    <h2 class="mt-4 mb-2"> {{i+1}}.{{a+1}}. Subpackages</h2>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="">Subpackage Name</label>
+                                            <input type="text" class="form-control"
+                                                [value]="subpackage.sub_package_name" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="">Subpackage Code</label>
+                                            <input type="text" class="form-control"
+                                                [value]="subpackage.sub_package_code" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mx-3" *ngFor="let categories of subpackage.categories">
+                                        <h2 *ngIf="subpackage.categories.length > 0" class="mt-4 mb-2">Categories</h2>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Category Name</label>
+                                                <input type="text" class="form-control"
+                                                    [value]="categories.category_name" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="">Amount</label>
+                                                <input type="text" class="form-control"
+                                                    [value]="categories.amount | currency: 'INR'" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template #noDataMessage>
+                        <div class="alert alert-info center">
+                            <p>No subscription data available.</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

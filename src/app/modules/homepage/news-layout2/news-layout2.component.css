@@ -1,0 +1,254 @@
+.unread-news {
+    font-weight: bold;
+    color: #000;
+
+}
+
+.read-news {
+    font-weight: normal;
+    color: #888;
+}
+
+
+.dropdown-menu.show {
+    display: grid;
+    /* margin: 50% 100% !important; */
+}
+
+.mat-mdc-checkbox {
+    margin-top: 0.5rem;
+    border-bottom: 0.09rem solid #f2f2f2;
+}
+
+
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker-animation 20s linear infinite;
+    padding: 0 100%;
+    float: right;
+    width: 400px;
+    text-align: right;
+}
+
+.ticker p {
+    font-size: 18px;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.last-news {
+    animation: none;
+}
+
+.ticker-container {
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid #e3e6f0;
+    margin: auto 0.6rem;
+}
+
+
+
+.search-control {
+    width: cal(100% - 10px);
+    height: 40px !important;
+    border-radius: 2px;
+    font-size: 1.5rem;
+}
+
+
+@keyframes ticker-animation {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#newsStoryContent table,
+th,
+td {
+    border: 1px solid #f1f1f1;
+    border-collapse: collapse;
+}
+
+
+
+
+
+td:nth-child(1),
+th:nth-child(1) {
+    min-width: 75px;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+    width: 100%;
+    min-width: 90%;
+    text-align: center;
+}
+
+
+
+.example-context-area {
+    display: inline-grid;
+    border: 2px dashed black;
+}
+
+.example-context-area .example-context-area {
+    margin: 100px;
+    width: 200px;
+    height: 100px;
+}
+
+.example-menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 280px;
+    background-color: rgb(255, 255, 255);
+    padding: 6px 0;
+}
+
+.example-menu-item {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    user-select: none;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+}
+
+.example-menu-item:hover {
+    background-color: rgb(208, 208, 208);
+}
+
+.example-menu-item:active {
+    background-color: rgb(170, 170, 170);
+}
+
+.mdc-button__label {
+    color: #f1f1f1;
+}
+
+.mat-mdc-checkbox label {
+    font-weight: 600;
+}
+
+.col {
+    max-width: 150px !important;
+}
+
+
+
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.custom-switch {
+    align-items: center;
+    /* You can adjust the spacing and alignment as needed */
+}
+
+.switch-label {
+    font-weight: bold;
+    /* Apply your desired font styles */
+    color: #333;
+    /* Set the color for the labels */
+}
+
+/* Style the toggle switch when checked */
+.custom-switch .form-check-input:checked+.form-check-label::before {
+    background-color: #007bff;
+    /* Change the background color when checked */
+}
+
+/* Style the toggle switch when not checked */
+.custom-switch .form-check-input:not(:checked)+.form-check-label::before {
+    background-color: #ccc;
+    /* Change the background color when not checked */
+}
+
+/* Style the slider (the actual switch) */
+.custom-switch .form-check-input+.form-check-label::before {
+    width: 2rem;
+    /* Adjust the width of the slider */
+}
+
+.card {
+    height: 100%;
+}
+
+
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.fixed-header {
+    width: 100%;
+    background-color: #f3f3f3;
+    height: 100%;
+}
+
+.fixed-header tbody {
+    height: 90%;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.fixed-header thead {
+    display: block;
+}
+
+.fixed-header tbody {
+    display: block;
+}
+
+.fixed-header tr {
+    max-width: 100%;
+}
+
+/* .fixed-header td,
+.fixed-header th {
+    display: inline-block;
+    min-width: 150px;
+} */
+
+.fixed-header tbody td {
+    float: left;
+    clear: left;
+    width: 150px;
+    /* Adjust as needed */
+}

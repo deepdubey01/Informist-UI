@@ -1,0 +1,442 @@
+{
+    "General / Digest": [
+        {
+            "value": "GMI",
+            "text": "Good Morning India"
+        },
+        {
+            "value": "WMAG",
+            "text": "World Markets At A Glance"
+        },
+        {
+            "value": "Markets At A Glance",
+            "text": "Indian Financial Markets At A Glance"
+        },
+        {
+            "value": "For The People",
+            "text": "For The People:"
+        },
+        {
+            "value": "Press Picks",
+            "text": "[I] PRESS"
+        },
+        {
+            "value": "Top Stories",
+            "text": "Top Stories on Cogencis"
+        },
+        {
+            "value": "Politics",
+            "text": "1/G/POI"
+        },
+        {
+            "value": "Courts",
+            "text": "Q/S/LAW"
+        },
+        {
+            "value": "Timelines",
+            "text": "TIMELINE"
+        },
+        {
+            "value": "Money Summary",
+            "text": "Summary of Stories on MoneyWire"
+        },
+        {
+            "value": "Equity Summary",
+            "text": "Summary of Stories on EquityWire"
+        },
+        {
+            "value": "Commodity Summary",
+            "text": "Summary of Stories on CommodityWire"
+        },
+        {
+            "value": "Fund Summary",
+            "text": "Summary of Stories on FundWire"
+        },
+        {
+            "value": "Cricket",
+            "text": "[I] CRICKET"
+        },
+        {
+            "value": "India Press Summary",
+            "text": "[I] India Press Summary"
+        }
+    ],
+    "Money Market": [
+        {
+            "value": "Money Market Outlook",
+            "text": "Money Market Outlook"
+        },
+        {
+            "value": "Liquidity Watch",
+            "text": "Liquidity Watch"
+        },
+        {
+            "value": "Call",
+            "text": "[I] India Call"
+        },
+        {
+            "value": "RBI LAF",
+            "text": "Result of RBI's"
+        },
+        {
+            "value": "MIBID/MIBOR",
+            "text": "MIBID/MIBOR"
+        },
+        {
+            "value": "Call Deals",
+            "text": "Deals in inter-bank call money"
+        },
+        {
+            "value": "CBLO Deals",
+            "text": "CCIL data on CBLO transactions"
+        }
+    ],
+    "SLR": [
+        {
+            "value": "Money Market Outlook",
+            "text": "Money Market Outlook"
+        },
+        {
+            "value": "GILTS",
+            "text": "India Gilts"
+        },
+        {
+            "value": "IRS",
+            "text": "India IRS"
+        },
+        {
+            "value": "Summary of Govt Borrowings",
+            "text": "Govt Debt Monitor: Summary"
+        },
+        {
+            "value": "Calendar of Gilt Issues",
+            "text": "Govt Debt Monitor: Calendar of"
+        },
+        {
+            "value": "Outstanding Gilts",
+            "text": "Govt Debt Monitor: List of outstanding government securities"
+        },
+        {
+            "value": "PD Underwriting Fee",
+            "text": "Govt Debt Monitor: Underwriting"
+        },
+        {
+            "value": "State Borrowings",
+            "text": "Govt Debt Monitor: State-wise"
+        },
+        {
+            "value": "Gilt Deals",
+            "text": "Data Alert: Gilt deals on RBI's NDS-OM"
+        },
+        {
+            "value": "IRS Deals",
+            "text": "Data Alert: IRS deals reported on CCIL platform"
+        },
+        {
+            "value": "91-day T-bill Auctions",
+            "text": "RBI sets 91-day"
+        },
+        {
+            "value": "182-day T-bill Auctions",
+            "text": "RBI sets 182-day"
+        },
+        {
+            "value": "364-day T-bill Auctions",
+            "text": "RBI sets 364-day"
+        },
+        {
+            "value": "Bond Indices",
+            "text": "Data Watch: CCIL's bond indices"
+        },
+        {
+            "value": "T-bill Indices",
+            "text": "CCIL's Treasury bill indices so far"
+        },
+        {
+            "value": "FIMMDA Gilt Prices",
+            "text": "Data Watch: FIMMDA's indicative prices of gilts"
+        },
+        {
+            "value": "FIMMDA Derivatives",
+            "text": "FIMMDA benchmarks for money market derivatives"
+        }
+    ],
+    "NON-SLR": [
+        {
+            "value": "Bond Placements",
+            "text": "India Bond Placements"
+        },
+        {
+            "value": "Corporate Bonds",
+            "text": "India Corporate Bonds:"
+        },
+        {
+            "value": "Short-Term Debt",
+            "text": "Short-Term Debt:"
+        },
+        {
+            "value": "Yield Spreads",
+            "text": "Yield Spreads - India Corporate Bonds vs Gilts"
+        },
+        {
+            "value": "Credit Ratings",
+            "text": "Q/M/RAT"
+        },
+        {
+            "value": "Corp bonds - NSE, BSE",
+            "text": "Data Alert: Corporate bond deals reported on"
+        },
+        {
+            "value": "Outstanding CDs",
+            "text": "Data Watch: RBI data on outstanding CDs"
+        },
+        {
+            "value": "Outstanding CPs",
+            "text": "Data Watch: RBI data on outstanding CPs"
+        }
+    ],
+    "FOREX": [
+        {
+            "value": "India Rupee",
+            "text": "India Rupee:"
+        },
+        {
+            "value": "India Rupee Outlook",
+            "text": "India Rupee Outlook:"
+        },
+        {
+            "value": "Key Deals in Dlr/Rupee",
+            "text": "Key deals in India's foreign exchange market"
+        },
+        {
+            "value": "Technical levels",
+            "text": "Technical levels of rupee"
+        },
+        {
+            "value": "FX Research",
+            "text": "FX Research:"
+        },
+        {
+            "value": "Reference Rate",
+            "text": "Data Watch: RBI's reference rate"
+        },
+        {
+            "value": "FX Turnover",
+            "text": "FX market trade turnover detailed by CCIL"
+        },
+        {
+            "value": "FX Deals Settlement",
+            "text": "Data Watch: Dlr/rupee deals settled by Clearing Corp"
+        },
+        {
+            "value": "Rupee poll",
+            "text": "InformistPoll: +rupee +seen"
+        }
+    ],
+    "RBI": [
+        {
+            "value": "RBI Watch",
+            "text": "RBI Watch:"
+        },
+        {
+            "value": "RBI Stories",
+            "text": "1/G/RBI"
+        },
+        {
+            "value": "RBI Policy",
+            "text": "RBI Policy:"
+        },
+        {
+            "value": "RBI Reports",
+            "text": "RBI Report:"
+        },
+        {
+            "value": "Global Central Bank Monitor",
+            "text": "Global Central Bank Monitor"
+        },
+        {
+            "value": "RBI LAF History",
+            "text": "Data Watch: RBI repo and reverse repo auctions so far"
+        },
+        {
+            "value": "RBI LAF",
+            "text": "Result of RBI's"
+        },
+        {
+            "value": "CRR Balances",
+            "text": "Data Watch: Banks' cumulative cash balances"
+        },
+        {
+            "value": "RBI Refinance",
+            "text": "Data Watch: RBI refinance"
+        }
+    ],
+    "GOVT POLICY": [
+        {
+            "value": "Cabinet",
+            "text": "1/G/CAB"
+        },
+        {
+            "value": "Finance Ministry",
+            "text": "1/G/FIN"
+        },
+        {
+            "value": "Budget",
+            "text": "BUDGET"
+        }
+    ],
+    "Economic Data": [
+        {
+            "value": "India Data Watch",
+            "text": "India Data Watch"
+        },
+        {
+            "value": "CPI",
+            "text": "Data Alert: +CPI"
+        },
+        {
+            "value": "WPI",
+            "text": "Data Alert: +WPI"
+        },
+        {
+            "value": "GDP",
+            "text": "Data Alert: +GDP"
+        },
+        {
+            "value": "Fiscal Deficit",
+            "text": "Data Alert: +\"fiscal gap\""
+        },
+        {
+            "value": "BoP",
+            "text": "Data Alert: +CAD"
+        },
+        {
+            "value": "IIP",
+            "text": "Data Alert: +IIP"
+        },
+        {
+            "value": "Core Sector",
+            "text": "Data Alert: +\"core sector\""
+        },
+        {
+            "value": "PMI",
+            "text": "PMI"
+        },
+        {
+            "value": "Service Exports",
+            "text": "Data Alert: +\"services exports\""
+        },
+        {
+            "value": "Export-Import",
+            "text": "Data Alert: +\"trade gap\""
+        },
+        {
+            "value": "FDI",
+            "text": "Data Alert: India +FDI +inflow"
+        },
+        {
+            "value": "FII Data",
+            "text": "Data Alert: +FIIs"
+        },
+        {
+            "value": "FII F&O Data",
+            "text": "Data Alert: +\"index futures\""
+        },
+        {
+            "value": "Tax Collections",
+            "text": "tax mop-up"
+        },
+        {
+            "value": "Power Generation",
+            "text": "Data Alert: +\"power generation\""
+        },
+        {
+            "value": "Rail Freight",
+            "text": "Data Alert: +\"rail freight\""
+        },
+        {
+            "value": "Petroleum Production",
+            "text": "Data Alert: +Crude"
+        },
+        {
+            "value": "Automobile Sales",
+            "text": "Data Alert: +\"car sales\""
+        },
+        {
+            "value": "Telecom Subscriber Base",
+            "text": "Data Alert: +GSM"
+        },
+        {
+            "value": "Tourist Arrivals",
+            "text": "Data Alert: +tourist"
+        }
+    ],
+    "Specials": [
+        {
+            "value": "Interview",
+            "text": "[I] INTERVIEW:"
+        },
+        {
+            "value": "Focus",
+            "text": "[I] FOCUS:"
+        },
+        {
+            "value": "Analysis",
+            "text": "[I] ANALYSIS:"
+        },
+        {
+            "value": "Wrap",
+            "text": "[I] WRAP:"
+        },
+        {
+            "value": "First Person",
+            "text": "First Person:"
+        },
+        {
+            "value": "First Cut",
+            "text": "First Cut:"
+        },
+        {
+            "value": "Exclusive",
+            "text": "Q/M/EXL"
+        }
+    ],
+    "InformistPOLL": [
+        {
+            "value": "GDP",
+            "text": "InformistPoll: +GDP"
+        },
+        {
+            "value": "WPI",
+            "text": "InformistPoll: +WPI"
+        },
+        {
+            "value": "IIP",
+            "text": "InformistPoll: +IIP"
+        },
+        {
+            "value": "CPI",
+            "text": "InformistPoll: +CPI"
+        },
+        {
+            "value": "Gilt Auction",
+            "text": "InformistPoll: +gilt"
+        },
+        {
+            "value": "T-Bill Auction",
+            "text": "InformistPoll: +T-bill"
+        },
+        {
+            "value": "14-day term repo",
+            "text": "InformistPoll: +\"term repo\""
+        },
+        {
+            "value": "Rupee",
+            "text": "InformistPoll: +gold"
+        },
+        {
+            "value": "Gold",
+            "text": "InformistPoll: +rupee +seen"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+<div class="loader-overlay" *ngIf="loaderService.isLoading$ | async">
+    <div class="spinner-container">
+        <mat-progress-spinner mode="indeterminate" diameter="50" [ngClass]="'custom-spinner-color'">
+        </mat-progress-spinner>
+        <h1>Please wait ....!!</h1>
+    </div>
+</div>

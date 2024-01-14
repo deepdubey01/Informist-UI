@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<main class="top-spacing">
+  <div class="container">
+    <a class="back-button" routerLink="/login"><img src="assets/images/arrow-left.svg" alt=""></a>
+  </div>
+  <div class="section-top-space login-section">
+    <div class="container">
+      <div class="form-container">
+        <h2>Enter the verification code</h2>
+        <p class="description">We've sent a 6-digit verification code on {{ mobileNumber }}</p>
+        <form class="form" #myForm="ngForm" (ngSubmit)="verifyOTP()">
+          <div class="form-group p-0">
+            <div class="otp-container">
+              <input class="form-control" type="number" id="digit-1" name="digit-1" data-next="digit-2"
+                [(ngModel)]="otp[0]" (keyup)="moveToNextInput($event, 0, 'digit-2')" maxlength="1">
+              <input class="form-control" type="number" id="digit-2" name="digit-2" data-next="digit-3"
+                data-previous="digit-1" [(ngModel)]="otp[1]" (keyup)="moveToNextInput($event, 1, 'digit-3')"
+                maxlength="1">
+              <input class="form-control" type="number" id="digit-3" name="digit-3" data-next="digit-4"
+                data-previous="digit-2" [(ngModel)]="otp[2]" (keyup)="moveToNextInput($event, 2, 'digit-4')"
+                maxlength="1">
+              <input class="form-control" type="number" id="digit-4" name="digit-4" data-next="digit-5"
+                data-previous="digit-3" [(ngModel)]="otp[3]" (keyup)="moveToNextInput($event, 3, 'digit-5')"
+                maxlength="1">
+              <input class="form-control" type="number" id="digit-5" name="digit-5" data-next="digit-6"
+                data-previous="digit-4" [(ngModel)]="otp[4]" (keyup)="moveToNextInput($event, 4, 'digit-6')"
+                maxlength="1">
+              <input class="form-control" type="number" id="digit-6" name="digit-6" data-previous="digit-5"
+                [(ngModel)]="otp[5]" (keyup)="moveToNextInput($event, 5)" maxlength="1">
+            </div>
+
+            <p class="send-otp-text">Resend OTP in <span class="semi-bold">00:59 min</span></p>
+          </div>
+          <div class="action-buttons button-bottom-fixed">
+            <button type="submit" class="custom-button custom-primary-button" [disabled]="errorMessage !== ''">Submit
+              OTP</button>
+            <p *ngIf="errorMessage !== ''" class="error-message">{{ errorMessage }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="paymentSuccess" #successModal [ngClass]="{'show': showSuccessModal}"
+    [style.display]="showSuccessModal ? 'block' : 'none'" tabindex="-1" role="dialog"
+    [attr.aria-hidden]="!showSuccessModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content modal-content-style1">
+        <button type="button" class="custom-btn-close" data-bs-dismiss="modal" aria-label="Close"><img
+            src="assets/images/close.svg" alt=""></button>
+        <div class="modal-body">
+          <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+          <p class="description">OTP Verification Successful</p>
+          <div class="action-buttons button-bottom-fixed">
+            <a (click)="redirectToProfile()" type="button" class="custom-button custom-secondary-button style-2">
+              Proceed
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

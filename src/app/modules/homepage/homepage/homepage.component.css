@@ -1,0 +1,388 @@
+.unread-news {
+    font-weight: bold;
+    color: #000;
+
+}
+
+.read-news {
+    font-weight: normal;
+    color: #888;
+}
+
+
+.dropdown-menu.show {
+    display: grid;
+    /* margin: 50% 100% !important; */
+}
+
+.mat-mdc-checkbox {
+    margin-top: 0.5rem;
+    border-bottom: 0.09rem solid #f2f2f2;
+}
+
+
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker-animation 20s linear infinite;
+    padding: 0 100%;
+    float: right;
+    width: 400px;
+    text-align: right;
+}
+
+.ticker p {
+    font-size: 18px;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.last-news {
+    animation: none;
+}
+
+.ticker-container {
+    height: 100%;
+    overflow: hidden;
+    border-right: 1px solid #e3e6f0;
+    margin: auto 0.6rem;
+}
+
+
+
+.search-control {
+    width: cal(100% - 10px);
+    height: 30px !important;
+    border-radius: 2px;
+    padding: 0 10px !important;
+    border: 1px solid rgb(95, 95, 95) !important;
+    color: #2c2c2c;
+    font-size: 1.4rem;
+}
+
+
+.update-control {
+    width: cal(100% - 10px);
+    height: 30px !important;
+    border-radius: 2px;
+    padding: 0 10px !important;
+    border: 1px solid rgb(95, 95, 95) !important;
+    color: #2c2c2c;
+    font-size: 1.4rem;
+}
+
+
+
+
+@keyframes ticker-animation {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#newsStoryContent table,
+th,
+td {
+    border: 1px solid #f1f1f1;
+    border-collapse: collapse;
+}
+
+
+
+
+
+td:nth-child(1),
+th:nth-child(1) {
+    min-width: 75px;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+    width: 100%;
+    min-width: 90%;
+}
+
+
+
+.example-context-area {
+    display: inline-grid;
+    border: 2px dashed black;
+}
+
+.example-context-area .example-context-area {
+    margin: 100px;
+    width: 200px;
+    height: 100px;
+}
+
+.example-menu {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 280px;
+    background-color: rgb(255, 255, 255);
+    padding: 6px 0;
+}
+
+.example-menu-item {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    user-select: none;
+    min-width: 64px;
+    line-height: 36px;
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+}
+
+.example-menu-item:hover {
+    background-color: rgb(208, 208, 208);
+}
+
+.example-menu-item:active {
+    background-color: rgb(170, 170, 170);
+}
+
+.mdc-button__label {
+    color: #f1f1f1;
+}
+
+.mat-mdc-checkbox label {
+    font-weight: 600;
+}
+
+.col {
+    max-width: 150px !important;
+}
+
+
+
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.custom-switch {
+    align-items: center;
+    /* You can adjust the spacing and alignment as needed */
+}
+
+.switch-label {
+    font-weight: bold;
+    /* Apply your desired font styles */
+    color: #333;
+    /* Set the color for the labels */
+}
+
+/* Style the toggle switch when checked */
+.custom-switch .form-check-input:checked+.form-check-label::before {
+    background-color: #007bff;
+    /* Change the background color when checked */
+}
+
+/* Style the toggle switch when not checked */
+.custom-switch .form-check-input:not(:checked)+.form-check-label::before {
+    background-color: #ccc;
+    /* Change the background color when not checked */
+}
+
+/* Style the slider (the actual switch) */
+.custom-switch .form-check-input+.form-check-label::before {
+    width: 2rem;
+    /* Adjust the width of the slider */
+}
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-menu {
+    border-radius: 5px;
+}
+
+.multiselect-native-select {
+    position: relative;
+}
+
+.multiselect-native-select select {
+    border: 0 !important;
+    clip: rect(0 0 0 0) !important;
+    height: 1px !important;
+    margin: -1px -1px -1px -3px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    left: 50%;
+    top: 30px;
+}
+
+.multiselect-container {
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.multiselect-container .input-group {
+    margin: 5px;
+}
+
+.multiselect-container li {
+    padding: 0;
+}
+
+.multiselect-container li .multiselect-all label {
+    font-weight: 700;
+}
+
+.multiselect-container li a {
+    padding: 0;
+}
+
+.multiselect-container li a label {
+    margin: 0;
+    height: 100%;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 3px 20px 3px 40px;
+}
+
+.multiselect-container li a label input[type=checkbox] {
+    margin-bottom: 5px;
+}
+
+.multiselect-container li a label.radio {
+    margin: 0;
+}
+
+.multiselect-container li a label.checkbox {
+    margin: 0;
+}
+
+.multiselect-container li.multiselect-group label {
+    margin: 0;
+    padding: 3px 20px 3px 20px;
+    height: 100%;
+    font-weight: 700;
+}
+
+.multiselect-container li.multiselect-group-clickable label {
+    cursor: pointer;
+}
+
+.btn-group .btn-group .multiselect.btn {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.form-inline .multiselect-container label.checkbox {
+    padding: 3px 20px 3px 40px;
+}
+
+.form-inline .multiselect-container label.radio {
+    padding: 3px 20px 3px 40px;
+}
+
+.form-inline .multiselect-container li a label.checkbox input[type=checkbox] {
+    margin-left: -20px;
+    margin-right: 0;
+}
+
+.form-inline .multiselect-container li a label.radio input[type=radio] {
+    margin-left: -20px;
+    margin-right: 0;
+}
+
+.toggleDateFilter {
+    font-size: 1.3rem;
+    height: 30px;
+}
+
+
+.centered-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 98%;
+    z-index: 11111111;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+
+#modalNewsHeader {
+    font-weight: 800;
+}
+
+.centered-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    justify-content: normal;
+}
+
+.centered-modal-content #modalNewsContent {
+    padding: 20px;
+}
+
+
+.centered-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.centered-card-header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.centered-card-body {
+    padding: 20px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.centered-close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}

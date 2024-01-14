@@ -1,0 +1,125 @@
+.form-control {
+    height: 40px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    width: 95%;
+    margin: 5px auto;
+    border: 0.1rem solid #f1f1f1;
+}
+
+.form-select {
+    height: 40px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    width: 95%;
+    margin: 5px auto;
+    border: 0.1rem solid #f1f1f1;
+}
+
+label {
+    font-weight: 600;
+}
+
+.shadow {
+    box-shadow: 0px 15px 15px #f1f1f1;
+}
+
+
+
+
+.FiteredSubmit {
+    background-color: #0052C3;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    width: 8rem;
+    margin-top: auto;
+}
+
+.FiteredReset {
+    background-color: #eb0000;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    width: 8rem;
+    margin-top: auto;
+}
+
+.FiteredReset:hover,
+.FiteredReset:active {
+    background-color: #ff5f5f;
+    border-color: #ff5f5f;
+    color: #fff;
+    margin-top: auto;
+}
+
+
+
+@media (min-width: 1300px) {
+    .FiteredSubmit {
+        background-color: #0052C3;
+        color: #fff;
+        font-size: 1.5rem;
+        padding: 0.6rem;
+        width: 8rem;
+    }
+}
+
+.FiteredSubmit:hover,
+.FiteredSubmit:active {
+    background-color: #495bc4;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+
+
+.gridtable tbody {
+    display: block;
+    overflow-y: scroll;
+}
+
+@media (max-width: 767px) {
+    .gridtable tbody {
+        max-height: 100vh;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+    .gridtable tbody {
+        max-height: 250px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .gridtable tbody {
+        max-height: 350px;
+    }
+}
+
+
+
+.table-bordered td:first-child,
+.table-bordered th:first-child {
+    width: 65px;
+}
+
+.table-bordered td:last-child,
+.table-bordered th:last-child {
+    width: 100px !important;
+}
+
+.gridtable thead,
+.gridtable tbody tr {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.gridtable thead {
+    width: calc(100% - 1rem);
+}
+
+.gridtable thead {
+    position: relative;
+}

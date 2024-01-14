@@ -1,0 +1,43 @@
+<app-header></app-header>
+<main class="top-spacing bottom-spacing profile-view">
+    <div class="container">
+        <div class="back-button"><img src="images/arrow-left.svg" alt=""></div>
+        <div class="d-flex justify-content-between">
+            <h2>Profile</h2>
+            <a href="edit-profile" class="text-link" aria-disabled="true">Edit</a>
+        </div>
+        <div class="form ">
+            <div class="avatar">{{ userData.fname.charAt(0) }}{{ userData.lname.charAt(0) }}
+            </div>
+            <div class="form-container ">
+                <div class="profile-details">
+                    <div class="form-group pt-0 desktop-pf">
+                        <label for="name">Name</label>
+                        <div class="labelValue">{{userData.fname}} {{userData.lname}} </div>
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="name">Phone Number</label>
+                        <div class="labelValue">{{userData.mobile_no}}</div>
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="name">Email ID</label>
+                        <div class="labelValue">{{userData.email_id}}</div>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="form-group pt-0">
+                        <label for="name">City</label>
+                        <div class="labelValue">{{userData.city}}</div>
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="name">Country</label>
+                        <div class="labelValue"><img src="assets/images/flags/india.svg" alt=""> India</div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-buttons fixed-bottom justify-content-end profile-desktop">
+                <a href="edit-profile" class="custom-button custom-primary-button">Update profile</a>
+            </div>
+        </div>
+    </div>
+</main>

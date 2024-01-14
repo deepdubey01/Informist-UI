@@ -1,0 +1,132 @@
+<app-header></app-header>
+
+
+<main class="top-spacing managed-sub-container">
+  <div class="container">
+    <img src="assets/images/arrow-left-blue.svg" alt="" class="back-button" id="BackToManageSub">
+    <h2 id="manag-heading-1">Manage Subscription</h2>
+    <h2 id="manag-heading-2" class="mobile-text">Subscription Details</h2>
+    <div *ngIf="subscribeResponseData">
+
+      <div class="managed-subscription" *ngFor="let paidtopic of subscribeResponseData">
+        <div id="SubscriptionDetails" class="selected-wire-list" *ngFor="let packages of paidtopic.packages">
+          <div class="main-title text-capitalize"> <i><img src="assets/images/diamond.svg" alt=""></i>
+            {{packages.package_name}}
+            <p> <i class="fas fa-ballot-check    "></i> <b>Expiry Date: </b> {{packages.subscription_until | date}} </p>
+
+          </div>
+          <div class="custom-scroll">
+            <div class="selected-topic-accordion">
+              <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                <div class="accordion-header">
+                  {{subPackages.sub_package_name}}
+                </div>
+                <div class="accordion-content">
+                  <div class="selected-topic-accordion">
+                    <div class="accordion-item" *ngFor="let categories of subPackages.categories">
+                      <div class="accordion-header">
+                        {{categories.category_name}}
+                      </div>
+                      <div class="accordion-content">
+                        <ul class="sublist-level-one">
+                          <li *ngFor="let categories of categories.categories">
+                            {{categories.category_name}}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="SubscriptionContent" class="subscribe-content">
+          <div class="custom-card sub-billing">
+            <ul>
+              <li>Total billing<span>₹{{paidtopic.total_amount}} </span></li>
+              <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+              <li>Created At<span> {{ formatDate(paidtopic.created_at) }} </span></li>
+
+            </ul>
+            <ul class="sub-details-mob">
+              <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+              <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+              <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+            </ul>
+            <p>Your payment will be automatically renewed</p>
+            <p>Amount inclusive of GST</p>
+            <div class="mobile-links">
+              <a href="javascript:;" class="text-link">View details</a> <a href="javascript:;" class="text-link"
+                id="EditBtnSubscripion">Edit Subscription</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="managed-subscription" *ngFor="let paidtopic of subscribetrialResponseData">
+        <div id="SubscriptionDetails" class="selected-wire-list" *ngFor="let packages of paidtopic.packages">
+          <div class="main-title"> <i><img src="assets/images/diamond.svg" alt=""></i> {{packages.package_name}} <span
+              class="d-sm-block d-md-none">67/70 Sub - sub Topics</span></div>
+          <div class="custom-scroll">
+            <div class="selected-topic-accordion">
+              <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                <div class="accordion-header">
+                  {{subPackages.sub_package_name}}
+                </div>
+                <div class="accordion-content">
+                  <div class="selected-topic-accordion">
+                    <div class="accordion-item" *ngFor="let categories of subPackages.categories">
+                      <div class="accordion-header">
+                        {{categories.category_name}}
+                      </div>
+                      <div class="accordion-content">
+                        <ul class="sublist-level-one">
+                          <li *ngFor="let categories of categories.categories">
+                            {{categories.category_name}}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="SubscriptionContent" class="subscribe-content">
+          <div class="custom-card sub-billing">
+            <ul>
+              <li>Annual billing<span>₹{{paidtopic.total_amount}} </span></li>
+              <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+            </ul>
+            <ul class="sub-details-mob">
+              <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+              <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+              <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+            </ul>
+            <p>Your payment will be automatically renewed</p>
+            <p>Amount inclusive of GST</p>
+            <div class="mobile-links">
+              <a href="javascript:;" class="text-link">View details</a>
+              <a href="javascript:;" class="text-link" id="EditBtnSubscripion">New Subscription</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="action-buttons action-button-1 fixed-bottom d-flex justify-content-end" id="action-manage-sub">
+    <a type="button" href="free-trial-select-wire"
+      class="custom-button px-4 py-2 custom-primary-button d-none d-md-block"><span class="text-white">Add More
+        Subscription</span></a>
+  </div>
+</main>
+
+<main class="top-spacing managed-sub-container" *ngIf="cartEmpty">
+  <div class="container">
+    <h2 class="text-danger text-center mx-auto"> You have not subscribed any package yet!</h2>
+  </div>
+</main>

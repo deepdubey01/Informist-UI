@@ -1,0 +1,78 @@
+<div *ngIf="!loginInProgress">
+  <main class="h-100 gradient-form  bottom-spacing-2" style="background-color: #FFF;">
+    <div class="container-fluid py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+
+              <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                  <h4 class="mb-4">We are more than just a company</h4>
+                  <p class="small mb-0">Informist Media is an independent real-time financial wire agency based in India
+                    that in its previous avatars was known as Cogencis (news), NewsWire18 and Crisil MarketWire.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="card-body p-md-5 mx-md-4">
+
+                  <div class="text-center">
+                    <img src="assets/images/informist-text-logo_with-tagline_white-bg.svg" style="width: 50%;">
+                    <h4 class="mt-1 mb-5 pb-1 title-logo">We are The Informist Team</h4>
+                  </div>
+
+                  <form class="form" #loginForm="ngForm" (ngSubmit)="sentOTP(loginForm, rememberMeCheckbox.checked)">
+                    <p>Please login to your account</p>
+
+                    <div class="form-outline mb-4">
+                      <input type="text" id="phone" [maxlength]="45" [(ngModel)]="username" class="form-control my-4"
+                        placeholder="Phone number or email address" name="username" ngModel required />
+
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input type="password" id="password" [maxlength]="15" [(ngModel)]="password"
+                        class="form-control my-2" placeholder="Password" name="password" ngModel required />
+                      <div style="float:right;margin-bottom:20px;margin-top:10px;">
+                        <label for="rememberMe"><input type="checkbox" id="rememberMe" [(ngModel)]="rememberMe"
+                            name="rememberMeCheckbox" class="mx-3" #rememberMeCheckbox>Remember
+                          me</label>
+                      </div>
+                      <div style="margin-bottom:20px;margin-top:10px;" class="msgdetails text-danger" id="lblMessage">
+                        {{errorMessage}} </div>
+                    </div>
+
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button type="submit" id="btnLogin"
+                        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 w-100 p-4">Log
+                        in</button>
+                      <a class="text-muted" href="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 me-2">Don't have an account? &nbsp;</p>
+                      <a href="signup" style="color:palevioletred"> Create New</a>
+                    </div>
+
+                  </form>
+                  <div class="text-center">
+                    <input type="hidden" id="hdFieldP" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div *ngIf="loginInProgress">
+  <div class="spinner-container">
+    <mat-progress-spinner mode="indeterminate" diameter="50" [ngClass]="'custom-spinner-color'">
+    </mat-progress-spinner>
+    <h1>Please wait ....!!</h1>
+  </div>
+</div>

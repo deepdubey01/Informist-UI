@@ -1,0 +1,96 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+  <nav class="navbar navbar-expand-sm bg-white shadow">
+
+    <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="logout-container">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle> <span
+            class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+          <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg" style="width: 3rem;"></button>
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdown1">
+          <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+          <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- <section class="content-header">
+    <div>
+      <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i class="fa fa-caret-left "
+          aria-hidden="true"></i> Back</button>
+    </div>
+    <h1 class="text-start">
+      Package Manage
+      <small>List</small>
+    </h1>
+  </section> -->
+
+
+  <section class="content">
+    <div class="card shadow">
+      <div class="card-header">
+        <span>Package List</span>
+        <div class="text-end my-2">
+          <button (click)="downloadXLSX()" class="btn btn-success text-white  mx-2 py-2 px-4"><i
+              class="fa fa-download text-white " aria-hidden="true"></i> XLSX</button>
+          <a href="admin/add-package" class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4"><i
+              class="fa fa-plus-circle mx-2" aria-hidden="true"></i>Add Package</a>
+        </div>
+      </div>
+      <div class=" card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Sr. no</th>
+                <th>Package</th>
+                <th>Package code</th>
+                <th>Maximum price</th>
+                <th>Discount Monthly</th>
+                <th>Discount Quaterly</th>
+                <th>Discount Yearly</th>
+                <th>Subpackages</th>
+                <th>Edit</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td> <a href="admin/subpackage-manage?package_id={{user.package_id}}">{{user.package_name}}</a>
+                </td>
+                <td> {{user.package_code}} </td>
+
+                <td>₹ {{user.full_service_month}} </td>
+                <td> {{user.discount_monthly}} </td>
+                <td> {{user.discount_quarterly}} </td>
+                <td> {{user.discount_yearly}} </td>
+                <td class="center">
+                  <a href="admin/subpackage-manage?package_id={{user.package_id}}" class="badge bg-primary">
+                    View
+                  </a>
+                </td>
+                <td class="center">
+                  <a class="badge bg-warning" href="admin/add-package?package_id={{user.package_id}}"> Edit
+                  </a>
+                </td>
+                <td class="center">
+                  <span [ngClass]="getStatusClass(user.status)"
+                    (click)="printStatus(user.package_id, user.status)">{{user.status}}</span>
+                </td>
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

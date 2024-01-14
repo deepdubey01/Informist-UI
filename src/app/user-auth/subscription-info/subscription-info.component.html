@@ -1,0 +1,24 @@
+<div *ngIf="subscriptionData">
+  <h2>Topics</h2>
+  <ul>
+    <li *ngFor="let topic of subscriptionData.topics">
+      <p>Topic Name: {{ topic.topic_name }}</p>
+      <ul>
+        <li>{{ topic.subtopics.subtopic_name }} - Amount: {{ topic.subtopics.amount }}</li>
+        <ng-container *ngIf="topic.subtopics.subtopics.length > 0">
+          <li *ngFor="let subtopic of topic.subtopics.subtopics">
+            {{ subtopic.subtopic_name }} - Amount: {{ subtopic.amount }}
+            <ng-container *ngIf="subtopic.subtopics.length > 0">
+              <ul>
+                <li *ngFor="let childSubtopic of subtopic.subtopics">
+                  {{ childSubtopic.subtopic_name }} - Amount: {{ childSubtopic.amount }}
+                </li>
+              </ul>
+            </ng-container>
+          </li>
+        </ng-container>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div *ngIf="subscriptionError">{{ subscriptionError }}</div>

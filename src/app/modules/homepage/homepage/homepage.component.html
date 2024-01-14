@@ -1,0 +1,788 @@
+<aside class="main-sidebar" [style.background-color]="sharedservice.primarybgcolor"
+    [style.color]="sharedservice.primarytextcolor" [ngClass]="{'show-sidebar': isSidebarOpen}" id="collapsibleNavId">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" disabled>
+                <div class="sidebar-brand-icon my-2">
+                    <img [src]="sharedservice.PrimaryLogo" class="w-100" alt="INFORMIST" style="height: 4.5rem;">
+                </div>
+            </a>
+
+            <hr class="sidebar-divider my-3">
+            <!-- <li class=" treeview">
+                <a href="index">
+                    <i class="fa fa-duotone fa-database mx-2" aria-hidden="true"
+                        [style.color]="sharedservice.primarytextcolor"></i>
+                    <span [style.color]="sharedservice.primarytextcolor">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="index">
+                    <i class="fas fa-box-open mx-2" [style.color]="sharedservice.primarytextcolor"></i>
+                    <span [style.color]="sharedservice.primarytextcolor">Breaking News</span>
+                </a>
+            </li>
+            <li [ngClass]="{'active': isSubmenuOpen}" (click)="toggleSubmenu($event)">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-list mx-2" [style.color]="sharedservice.primarytextcolor"></i>
+                    <span [style.color]="sharedservice.primarytextcolor">Subscribed News</span>
+                    <i class="fas fa-angle-left pull-right" [style.color]="sharedservice.primarytextcolor"
+                        [ngClass]="{'rotate-90': isSubmenuOpen}"></i>
+                </a>
+                <ul class="treeview-menu" [ngClass]="{'active': isSubmenuOpen}">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="index">
+                    <i class="fa fa-users mx-2" aria-hidden="true" [style.color]="sharedservice.primarytextcolor"></i>
+                    <span [style.color]="sharedservice.primarytextcolor">Previous News</span>
+                </a>
+            </li>
+            <li>
+                <a href="index">
+                    <i class="fas fa-clock mx-2" [style.color]="sharedservice.primarytextcolor"></i>
+                    <span [style.color]="sharedservice.primarytextcolor">Main News</span>
+                </a>
+            </li> -->
+        </ul>
+    </section>
+</aside>
+
+
+
+<div class="content-wrapper" #sectionOne id="sectionTwo">
+    <nav class="navbar navbar-expand-sm navbar-dark shadow bg-white">
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon p-2" [style.background-color]="sharedservice.primarynaviconcolor"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
+            <div class="btn-group btn-toggle border mx-2">
+                <button class="btn" [class.btn-white.border]="!toggleValue"
+                    [style.backgroundColor]="!toggleValue ? sharedservice.primarybuttoncolor : ''"
+                    [style.color]="!toggleValue ? sharedservice.primarybuttontextcolor : ''"
+                    (click)="onToggleLayout(); toggleValue = false">
+                    Layout 1
+                </button>
+                <button class="btn" [class.btn-white.border]="toggleValue"
+                    [style.backgroundColor]="toggleValue ? sharedservice.primarybuttoncolor : ''"
+                    [style.color]="toggleValue ? sharedservice.primarybuttontextcolor : ''"
+                    (click)="onToggleLayout(); toggleValue = true">
+                    Layout 2
+                </button>
+            </div>
+
+
+
+
+            <button id="connection" class="btn  p-2" (click)="ReconnectConnection()"></button>
+            <form class="form-inline mt-2 mt-md-0 mx-2">
+                <i [style.color]="sharedservice.primarybuttoncolor" (click)="openOffCanva(topOffCanvas)"
+                    class="fa fa-search " style="font-size: 2.2rem; position: relative;">
+                </i>
+            </form>
+
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngIf="isUserLoggedIn">
+                    <div ngbDropdown class="d-inline-block">
+                        <a [style.color]="sharedservice.primarynaviconcolor" type="button"
+                            class=" navbar-text logoutBtn mx-2 " role="button" id="notificationMenu" ngbDropdownToggle>
+                            <i [style.color]="sharedservice.primarynaviconcolor" class="fa fa-bell"
+                                [style.color]="sharedservice.primarybuttoncolor" aria-hidden="true"></i>
+                        </a>
+                        <div ngbDropdownMenu aria-labelledby="notificationMenu"
+                            class="dropdown-menu lg-dropdown-menu notification-ui_dd">
+                            <div class="notification-ui_dd-header">
+                                <h3 class="text-center"><b>Notification</b></h3>
+                            </div>
+                            <div class="notification-ui_dd-content">
+                                <ng-container *ngIf="notificationData?.length > 0; else noDataFound">
+                                    <div *ngFor="let notification of notificationData"
+                                        class="notification-list notification-list--unread">
+                                        <div class="notification-list_img w-75">
+                                            <p>{{notification.message}}.</p>
+                                        </div>
+
+                                        <div class="notification-list_detail w-25">
+                                            <p><small>{{notification.subscription_until | date}}</small></p>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                                <ng-template #noDataFound>
+                                    <div class="notification-list notification-list--unread ">
+                                        <div class="notification-list_detail ">
+                                            <p class="text-center">No Data Found</p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </div>
+
+                            <div class="notification-ui_dd-footer ">
+                                <a [style.color]="sharedservice.primarytextcolor"
+                                    [style.background-color]="sharedservice.primarybgcolor"
+                                    (click)="subscriptionOpen(subscription)" class="btn btn-success btn-block my-2">View
+                                    All</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div [style.background-color]="sharedservice.primarybgcolor" [style.color]="sharedservice.primarytextcolor"
+            class="topbar-divider d-none d-sm-block"></div>
+        <div class="logout-container d-flex">
+            <div ngbDropdown class="d-inline-block">
+                <a [style.color]="sharedservice.primarynaviconcolor" type="button" class=" navbar-text logoutBtn mx-2 "
+                    role="button" id="dropdown1" ngbDropdownToggle> <i [style.color]="sharedservice.primarynaviconcolor"
+                        class="fa fa-user-circle " aria-hidden="true"></i>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" (click)="profileOpen(profile)">Profile</a>
+                    <a class="dropdown-item" (click)="subscriptionOpen(subscription)">My Subscription</a>
+                    <a class="dropdown-item" (click)="changePasswordOpen()">Change Password</a>
+                    <a class="dropdown-item" (click)="open()">Setting</a>
+                    <a class="dropdown-item" href="javascript:void(0);" (click)="logout()">Log Out</a>
+                </div>
+            </div>
+        </div> -->
+        <li class="nav-item " *ngIf="isUserLoggedIn">
+            <div ngbDropdown class="d-inline-block">
+                <a type="button" class=" navbar-text logoutBtn mx-2 " role="button" id="dropdown1" ngbDropdownToggle>
+                    <i [style.color]="sharedservice.primarybuttoncolor" class="fa fa-user-circle "
+                        aria-hidden="true"></i>
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1" class="p-3 border-rounded">
+                    <a class="dropdown-item" (click)="profileOpen(profile)">
+                        Profile</a>
+                    <a class="dropdown-item" (click)="subscriptionOpen(subscription)">
+                        My Subscription</a>
+                    <a class="dropdown-item" (click)="changePasswordOpen()">
+                        Change Password</a>
+                    <a class="dropdown-item" (click)="open()">
+                        Setting</a>
+                    <a class="dropdown-item" href="javascript:void(0);" (click)="logout()">
+                        Log Out</a>
+                </div>
+            </div>
+        </li>
+    </nav>
+    <!-- Import the Router in your component -->
+    <app-news-layout1 *ngIf="!toggleValue"></app-news-layout1>
+    <app-news-layout2 *ngIf="toggleValue"></app-news-layout2>
+
+
+
+</div>
+
+
+
+<ng-template #subscription let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <main class=" managed-sub-container">
+            <div class=" container">
+                <h2 id="manag-heading-1">Manage Subscription</h2>
+                <h2 id="manag-heading-2" class="mobile-text">Subscription Details</h2>
+                <div *ngIf="subscribeResponseData">
+
+                    <div class="managed-subscription" *ngFor="let paidtopic of subscribeResponseData">
+                        <div id="SubscriptionDetails" class="selected-wire-list"
+                            *ngFor="let packages of paidtopic.packages">
+                            <div class="main-title text-capitalize"> <i><img src="assets/images/diamond.svg" alt=""></i>
+                                {{packages.package_name}}
+                                <p> <i [style.color]="sharedservice.primarytextcolor" class="fas fa-ballot-check"></i>
+                                    <b>Expiry Date:
+                                    </b>
+                                    {{packages.subscription_until | date}}
+                                </p>
+
+                            </div>
+                            <div class="custom-scroll">
+                                <div class="selected-topic-accordion">
+                                    <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                                        <div class="accordion-header" (click)="toggleAccordion($event)">
+                                            {{subPackages.sub_package_name}}
+                                        </div>
+                                        <div class="accordion-content"
+                                            [style.display]="subPackages.expanded ? 'block' : 'none'">
+                                            <div class="selected-topic-accordion">
+                                                <div class="accordion-item"
+                                                    *ngFor="let categories of subPackages.categories">
+                                                    <div class="accordion-header" (click)="toggleAccordion($event)">
+                                                        {{categories.category_name}}
+                                                    </div>
+                                                    <div class="accordion-content"
+                                                        [style.display]="categories.expanded ? 'none' : 'block'">
+                                                        <ul class="sublist-level-one">
+                                                            <li *ngFor="let categories of categories.categories">
+                                                                {{categories.category_name}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="SubscriptionContent" class="subscribe-content">
+                                <div class="custom-card sub-billing">
+                                    <ul>
+                                        <li>Total billing<span>₹{{paidtopic.subscription_amount | number}} </span></li>
+                                        <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+
+                                    </ul>
+                                    <ul class="sub-details-mob">
+                                        <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+                                        <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+                                        <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+                                    </ul>
+                                    <p>Your payment will be automatically renewed</p>
+                                    <p>Amount inclusive of GST</p>
+                                    <div class="mobile-links">
+                                        <a [style.color]="sharedservice.primarytextcolor" href="javascript:;"
+                                            class="text-link">View
+                                            details</a> <a [style.color]="sharedservice.primarytextcolor"
+                                            href="javascript:;" class="text-link" id="EditBtnSubscripion">Edit
+                                            Subscription</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="managed-subscription" *ngFor="let paidtopic of subscribetrialResponseData">
+                        <div id="SubscriptionDetails" class="selected-wire-list"
+                            *ngFor="let packages of paidtopic.packages">
+                            <div class="main-title"> <i><img src="assets/images/diamond.svg" alt=""></i>
+                                {{packages.package_name}}
+                                <span class="d-sm-block d-md-none">67/70 Sub - sub Topics</span>
+                            </div>
+                            <div class="custom-scroll">
+                                <div class="selected-topic-accordion">
+                                    <div class="accordion-item pt-0" *ngFor="let subPackages of packages.sub_packages">
+                                        <div class="accordion-header">
+                                            {{subPackages.sub_package_name}}
+                                        </div>
+                                        <div class="accordion-content">
+                                            <div [style.background-color]="sharedservice.primarybgcolor"
+                                                [style.color]="sharedservice.primarytextcolor"
+                                                class="selected-topic-accordion">
+                                                <div [style.background-color]="sharedservice.primarybgcolor"
+                                                    [style.color]="sharedservice.primarytextcolor"
+                                                    class="accordion-item"
+                                                    *ngFor="let categories of subPackages.categories">
+                                                    <div [style.background-color]="sharedservice.primarybgcolor"
+                                                        [style.color]="sharedservice.primarytextcolor"
+                                                        class="accordion-header">
+                                                        {{categories.category_name}}
+                                                    </div>
+                                                    <div [style.background-color]="sharedservice.primarybgcolor"
+                                                        [style.color]="sharedservice.primarytextcolor"
+                                                        class="accordion-content">
+                                                        <ul class="sublist-level-one">
+                                                            <li *ngFor="let categories of categories.categories">
+                                                                {{categories.category_name}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="SubscriptionContent" class="subscribe-content">
+                            <div class="custom-card sub-billing">
+                                <ul>
+                                    <li>Annual billing<span>₹{{paidtopic.total_amount}} </span></li>
+                                    <li>Subscription Type<span> {{paidtopic.subscription_type}} </span></li>
+                                </ul>
+                                <ul class="sub-details-mob">
+                                    <li><img src="assets/images/diamond.svg" width="24" alt=""> Commodity Wire</li>
+                                    <li><img src="assets/images/sale.svg" alt=""> Equity Wire</li>
+                                    <li><img src="assets/images/currency-rupee-circle.svg" alt=""> Money Wire</li>
+                                </ul>
+                                <p>Your payment will be automatically renewed</p>
+                                <p>Amount inclusive of GST</p>
+                                <div class="mobile-links">
+                                    <a [style.color]="sharedservice.primarytextcolor" href="javascript:;"
+                                        class="text-link">View
+                                        details</a>
+                                    <a [style.color]="sharedservice.primarytextcolor" href="javascript:;"
+                                        class="text-link" id="EditBtnSubscripion">New
+                                        Subscription</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="action-buttons action-button-1 fixed-bottom d-flex justify-content-end" id="action-manage-sub">
+                <a [style.color]="sharedservice.primarytextcolor" type="button" href="free-trial-select-wire"
+                    class="custom-button px-4 py-2 custom-primary-button d-none d-md-block"
+                    [style.background-color]="sharedservice.primarybgcolor"><span class=""
+                        [style.color]="sharedservice.primarytextcolor">Add More
+                        Subscription</span></a>
+            </div>
+        </main>
+
+        <main class="top-spacing managed-sub-container" *ngIf="cartEmpty">
+            <div class="container d-flex flex-column justify-content-center align-items-center">
+                <div class="text-center">
+                    <i [style.color]="sharedservice.primarytextcolor" class="far fa-frown fa-5x text-danger"></i>
+                </div>
+                <h2 class="text-danger text-center mx-auto mt-3">Oops! You haven't subscribed to any package yet.</h2>
+                <p class="text-secondary text-center mt-3">Browse our packages and find the perfect one for you.</p>
+                <a [style.color]="sharedservice.primarytextcolor" href="free-trial-select-wire"
+                    class="btn btn-primary mt-3">Browse
+                    Packages</a>
+            </div>
+        </main>
+
+    </div>
+</ng-template>
+
+<ng-template #profile let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body profile-body">
+        <main class=" bottom-spacing profile-view">
+            <div class="container">
+
+                <div class="d-flex justify-content-between">
+                    <h2>User Profile</h2>
+
+                </div>
+                <div class="form ">
+                    <div class="avatar">{{
+                        userData.fname.charAt(0) }}{{ userData.lname.charAt(0) }}
+                    </div>
+                    <div class="form-container ">
+                        <div class="profile-details">
+                            <div class="form-group pt-0 desktop-pf">
+                                <label for="name">Name</label>
+                                <div class="labelValue">{{userData.fname}} {{userData.lname}} </div>
+                            </div>
+                            <div class="form-group pt-0">
+                                <label for="name">Phone Number</label>
+                                <div class="labelValue">{{userData.mobile_no}}</div>
+                            </div>
+                            <div class="form-group pt-0">
+                                <label for="name">Email ID</label>
+                                <div class="labelValue">{{userData.email_id}}</div>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <div class="form-group pt-0">
+                                <label for="name">City</label>
+                                <div class="labelValue">{{userData.city}}</div>
+                            </div>
+                            <div class="form-group pt-0">
+                                <label for="name">Country</label>
+                                <div class="labelValue"><img src="assets/images/flags/india.svg" alt=""> India</div>
+                            </div>
+
+                            <div class="row my-3">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <button type="submit" class="form-control search-control btn p-0"
+                                            [style.background-color]="sharedservice.primarybgcolor"
+                                            (click)="EditProfileOpen(profileEdit)"
+                                            [style.color]="sharedservice.primarytextcolor">Edit
+                                            Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</ng-template>
+
+<ng-template #profileEdit let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body profile-body">
+        <main class=" profile-view edit">
+            <div class="container">
+                <div class="back-button"><img src="assets/images/arrow-left.svg" alt=""></div>
+                <div class="d-flex justify-content-between">
+                    <h2>Edit Profile</h2>
+
+                </div>
+                <form class="form" #profileForm="ngForm">
+                    <div class="avatar">{{
+                        (userData.fname && userData.lname) ? userData.fname.charAt(0) +
+                        userData.lname.charAt(0) : '' }}</div>
+                    <div class="form-container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group pt-0">
+                                    <label for="name">First Name</label>
+                                    <input type="text" readonly id="fname" [ngModel]="userData.fname"
+                                        class="form-control update-control" name="fname">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group pt-0">
+                                    <label for="name">Last Name</label>
+                                    <input type="text" readonly id="lname" [ngModel]=" userData.lname"
+                                        class="form-control update-control" name="lname">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group pt-0">
+                                    <label for="email">Email ID</label>
+                                    <input type="text" readonly id="email" [ngModel]="userData.email_id"
+                                        class="form-control update-control" name="email">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group pt-0">
+                                    <label for="mobile-number">Mobile Number</label>
+                                    <input type="text" readonly id="mobile-number" [ngModel]="userData.mobile_no"
+                                        class="form-control update-control" placeholder="10-digit phone number"
+                                        name="mobile-number">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group pt-0">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" [(ngModel)]="userData.city"
+                                        class="form-control update-control" name="city">
+                                </div>
+                            </div>
+                            <div class="col-md-4 my-auto">
+
+
+                                <div class="row">
+                                    <div class=" col">
+                                        <div class="form-group">
+                                            <button type="submit" class="form-control search-control btn p-0"
+                                                [style.background-color]="sharedservice.primarybgcolor"
+                                                (click)="onSaveChanges(profileForm)"
+                                                [style.color]="sharedservice.primarytextcolor">Update</button>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="reset" name="" id="" (click)="clearTableRows(searchTable)"
+                                                class="form-control search-control btn bg-danger text-white btn-danger p-0"
+                                                value="Cancel" (click)="modal.dismiss('Cross click')">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+</ng-template>
+
+
+
+<div id="newsModal" class="modal News-Modal-Search-Table centered-modal" style="display: none;">
+    <div class="modal-header bg-white centered-modal-header">
+        <div id="modalNewsHeader"></div>
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            onclick="closeModal()"></button>
+    </div>
+    <div class="modal-content Search-Table-content centered-modal-content ">
+        <div class="card centered-card ">
+            <div class="card-body centered-card-body NewsPanel-Box-Story">
+                <div id="modalNewsContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #topOffCanvas let-modal>
+    <div class="modal-header">
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="onCloseButtonClick(searchTable)"></button>
+    </div>
+    <div class="modal-body profile-body">
+        <form #searchForm="ngForm" (ngSubmit)="onSearchNews(searchForm)">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input type="text" name="keyword_search" id="keyword_search" [(ngModel)]="keyword_search"
+                            class="form-control search-control" placeholder="Keyword Search">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group d-flex">
+                        <div class="form-check mx-2">
+                            <input type="radio" class="form-check-input" name="SearchIn" id="SearchIn1"
+                                [(ngModel)]="SearchIn" value="headline">
+                            <label class="form-check-label" for="SearchIn1">Headline</label>
+                        </div>
+                        <div class="form-check mx-2">
+                            <input type="radio" class="form-check-input" name="SearchIn" id="SearchIn2"
+                                [(ngModel)]="SearchIn" value="fulltext">
+                            <label class="form-check-label" for="SearchIn2">Headline & Storytext</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class=" form-group d-flex">
+                        <div class="col-md-5 form-group mx-2">
+                            <select id="dateOption" class="form-select search-control" name="dateOption"
+                                [(ngModel)]="dateOption" (change)="onDateOptionChange()">
+                                <option value="">Date Option</option>
+                                <option value="from">From</option>
+                                <option value="to">To</option>
+                                <option value="between">Between</option>
+                            </select>
+                        </div>
+                        <ng-container *ngIf="dateOption !== 'between'; else betweenSection">
+                            <input *ngIf="dateOption === 'from'" type="date" name="news_from_date" id="news_from_date"
+                                [(ngModel)]="news_from_date" class="form-control search-control" ngModel required>
+                            <input *ngIf="dateOption === 'to'" type="date" name="news_to_date" id="news_to_date"
+                                [(ngModel)]="news_to_date" class="form-control search-control">
+                        </ng-container>
+                        <ng-template #betweenSection>
+                            <div class="form-group mx-2">
+                                <input type="date" name="news_from_date" id="news_from_date"
+                                    [(ngModel)]="news_from_date" class="form-control search-control" ngModel required>
+                            </div>
+                            <div class="form-group mx-2">
+                                <input type="date" name="news_to_date" id="news_to_date" [(ngModel)]="news_to_date"
+                                    class="form-control search-control">
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-md-2">
+                    <input type="text" name="symbolcategory" id="symbolcategory" [(ngModel)]="symbolcategory"
+                        class="form-control search-control" placeholder="Company Search" list="DataSymbol"
+                        (input)="onSearchChange()">
+                    <datalist id="DataSymbol">
+                    </datalist>
+                </div>
+
+                <div class="form-group col-lg-2 col-md-2">
+                    <select name="symbolCondition" id="symbolCondition" [(ngModel)]="symbolCondition"
+                        class="form-select search-control" ngModel required
+                        (ngModelChange)="onSymbolConitionChange($event)">>
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                        <option value="NOT">NOT</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-1 col-md-1">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary h-100" (click)="addNewsCategory('symbol')">Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6 border">
+                    <div id="topicschipContainer" class="example-chip-list my-2">
+                        <div *ngFor="let chip of symbolsCategories; let i = index" class="badge example-chip mx-2"
+                            [style.color]="sharedservice.primarytextcolor"
+                            [style.background-color]="sharedservice.primarybgcolor">
+                            {{ chip }}
+                            <button type="button" class="close " [style.color]="sharedservice.primarytextcolor"
+                                (click)="removeNewsCategory('symbol',i)">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="form-group col-lg-2 col-md-2">
+                    <select type="text" class="form-control search-control" placeholder="Topic Search" id="SearchList"
+                        (focus)="searchMenu()" (change)="onSelectChange($event)">
+                        <option value="">Select Wire</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 col-md-2">
+                    <select class="form-control search-control" name="newNewsCategory" [(ngModel)]="newNewsCategory"
+                        placeholder="" aria-describedby="helpId" id="searchListPanel" disabled="true">
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 col-md-2">
+                    <select name="topicCondition" id="topicCondition" [(ngModel)]="topicCondition"
+                        class="form-select search-control" ngModel required
+                        (ngModelChange)="onTopicConitionChange($event)">
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                        <option value="NOT">NOT</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-1 col-md-1">
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary h-100" (click)="addNewsCategory('topic')">Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-5 border">
+                    <div id="topicschipContainer" class="example-chip-list my-2">
+                        <div *ngFor="let chip of topicsCategories; let i = index" class="badge example-chip mx-2"
+                            [style.color]="sharedservice.primarytextcolor"
+                            [style.background-color]="sharedservice.primarybgcolor">
+                            {{ chip }}
+                            <button type="button" class="close " [style.color]="sharedservice.primarytextcolor"
+                                (click)="removeNewsCategory('topic',i)">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row my-3">
+                <div class="col">
+                    <div class="form-group">
+                        <button type="submit" class="form-control search-control btn p-0"
+                            [style.background-color]="sharedservice.primarybgcolor"
+                            [style.color]="sharedservice.primarytextcolor">Search</button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input type="reset" name="" id="" (click)="clearTableRows(searchTable)"
+                            class="form-control search-control btn bg-danger text-white btn-danger p-0" value="Reset">
+                    </div>
+                </div>
+            </div>
+
+
+            <span class="text-danger">{{errorMessage}}</span>
+        </form>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card my-2">
+                    <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+                        <div class="table-responsive">
+                            <table id="newsTable"
+                                class="table table-bordered {{searchTable}} fixed-header table-scroll">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Headlines <button (click)="downloadCSV()"
+                                                class="btn btn-success text-white float-end px-4" text-end><i
+                                                    class="fa fa-download text-white " aria-hidden="true"></i>
+                                                XLSX</button></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="body-half-screen">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+<ng-template #searchbox let-modal>
+    <div class="modal-header ">
+        <!-- <h4 class="modal-title">Search Here......</h4> -->
+        <button type="button" class="btn-close" [style.color]="sharedservice.primarytextcolor" aria-label="Close"
+            (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body profile-body">
+        <form #filteredForm="ngForm" (ngSubmit)="onFilteredNews(filteredForm)">
+            <div class="row main-filter-panel">
+                <div class="col-md-2 my-2">
+                    <div class="form-group">
+                        <select class="form-select search-control" name="mainwire" id="mainwire" [(ngModel)]="mainwire"
+                            ngModel required (ngModelChange)="onHeadlineChange($event)">
+                            <option *ngFor="let wires of wirePermission" value="{{wires.packagecode}}"
+                                [selected]="mainwire === '{{wires.packagecode}}'">
+                                {{wires.package}}</option>
+                            <!-- <option value="CMW" [selected]="mainwire === 'CMW'">Money Wire</option>
+                            <option value="CEW" [selected]="mainwire === 'CEW'">Equity Wire</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class=" col my-2">
+                    <div class="form-group">
+                        <button type="submit" class=" form-control shadow search-control p-0"
+                            [style.background-color]="sharedservice.primarybgcolor"
+                            [style.color]="sharedservice.primarytextcolor">Search</button>
+                    </div>
+                </div>
+                <div class="col my-2">
+                    <div class="form-group">
+                        <input type="reset" name="" id=""
+                            class="form-control search-control shadow bg-danger text-white btn-danger p-0"
+                            value="Reset">
+                    </div>
+                </div>
+            </div>
+
+            <span class="text-danger">{{errorMessage}}</span>
+        </form>
+
+        <!-- <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card my-2">
+                    <div class="card-header">
+                        <span> News Dashboard</span>
+                        <div class="text-end">
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="newsTable" class="table table-bordered {{filteredForm}} fixed-header">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Headlines <button (click)="downloadCSV()"
+                                                class="btn btn-success text-white float-end px-4" text-end><i
+                                                    class="fa fa-download text-white " aria-hidden="true"></i>
+                                                XLSX</button></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</ng-template>

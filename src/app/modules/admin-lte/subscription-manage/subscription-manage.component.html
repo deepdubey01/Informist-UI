@@ -1,0 +1,314 @@
+<div *ngIf="loading" class="preloader">
+  <img [src]="preloaderImageUrl" alt="Loading...">
+</div>
+<div *ngIf="!loading">
+  <app-sidebar-layout></app-sidebar-layout>
+  <div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+      <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="logout-container">
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+            <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+              style="width: 3rem;"></button>
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          </a>
+          <div ngbDropdownMenu aria-labelledby="dropdown1">
+            <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+            <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- <section class="content-header">
+      <div>
+        <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i class="fa fa-caret-left "
+            aria-hidden="true"></i> Back</button>
+      </div>
+      <h1 class="text-start">
+        Subscription Manage
+        <small>List</small>
+      </h1>
+    </section> -->
+
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="card shadow">
+            <div class="card-header">
+              <span>Subscription Data</span>
+              <div class="text-end my-2">
+                <button class="btn btn-success text-white mx-2 py-2 px-4" (click)="downloadXLSX()"><i
+                    class="fa fa-download text-white " aria-hidden="true"></i> XLSX</button>
+
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="" class="my-2" (ngSubmit)="onSubmit()" #filterForm="ngForm">
+                <div class="row my-3">
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="date" name="" id="" class="form-control shadow" name="from_date"
+                            [(ngModel)]="subscriptionFilterData.from_date" appDateFormat>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="form-group">
+                          <input type="date" name="" id="" class="form-control shadow" name="to_date"
+                            [(ngModel)]="subscriptionFilterData.to_date" appDateFormat>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-md-6 ">
+                        <div class="form-group">
+                          <input type="text" class="form-control shadow" placeholder="Amount from" name="from_amount"
+                            [(ngModel)]="subscriptionFilterData.from_amount">
+                        </div>
+                      </div>
+                      <div class="col ">
+                        <div class="form-group">
+                          <input type="text" name="to_amount" id="" class="form-control shadow" placeholder="Amount to"
+                            name="to_amount" [(ngModel)]="subscriptionFilterData.to_amount">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row">
+                      <div class="col-md-6 col-md-6">
+                        <div class="form-group">
+
+                          <input type="text" class="form-control shadow" placeholder="Enter Package Code"
+                            name="package_code" [(ngModel)]="subscriptionFilterData.package_code">
+
+                        </div>
+                      </div>
+                      <div class=" col-md-6 col-md-6">
+                        <div class="form-group">
+
+                          <input type="text" name="" id="" class="form-control shadow"
+                            placeholder="Enter Subpackage Code" name="sub_package_code"
+                            [(ngModel)]=" subscriptionFilterData.sub_package_code">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class=" col-md-4">
+                    <div class="row">
+                      <div class="col-md-6 ">
+                        <div class="form-group">
+                          <input type="text" class="form-control shadow" placeholder="Enter Category Code"
+                            [(ngModel)]="subscriptionFilterData.category_code" name="category_code">
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="form-group mx-auto">
+                          <select type="text" class="form-select" [(ngModel)]="subscriptionFilterData.subscription_type"
+                            name="subscription_type">
+                            <option value="" aria-readonly="true">Select Subscription Type</option>
+                            <option value="PAID">PAID</option>
+                            <option value="TRIAL">TRIAL</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-auto my-auto">
+                    <div class="form-group ">
+                      <label for=""></label>
+                      <input type="submit" class="btn FiteredSubmit  shadow" value=" Submit">
+                    </div>
+                  </div>
+                  <div class="w-auto my-auto">
+                    <div class="form-group ">
+                      <label for=""></label>
+                      <input type="reset" class="btn FiteredReset shadow" (click)="resetFilterForm()" value=" Reset">
+                    </div>
+                  </div>
+                  <small class="text-danger"> {{error_Message}} </small>
+                </div>
+              </form>
+              <div class="table-responsive gridtable">
+                <table class=" table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Sr. No</th>
+                      <th>User Name</th>
+                      <th>Subscription Type
+                      </th>
+                      <th>Subscribe Date</th>
+                      <th>Amount</th>
+                      <th>View Details</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="subscriptionData.length > 0; else noDataFound">
+                    <ng-container *ngFor="let subscription of subscriptionData;let i = index">
+                      <tr>
+                        <td>{{ i + 1 }}.</td>
+                        <td> <a style="cursor: pointer;">
+                            {{ subscription.fname }}
+                            {{ subscription.lname }}
+
+                          </a></td>
+                        <td>
+
+                          {{ subscription.subscription_type }}
+
+                        </td>
+                        <td>{{ subscription.created_at | date:'short' }}</td>
+                        <td>₹{{ subscription.subscription_amount }}/-</td>
+                        <td>
+                          <a href="admin/subscription-details?subscription_id={{subscription.subscription_id}}"
+                            class="badge  bg-primary">
+                            View
+                          </a>
+                        </td>
+                      </tr>
+                      <tr *ngIf="subscription.showSubtable">
+                        <td colspan="5">
+                          <table class="subtable table table-striped table-bordered">
+                            <thead class="responsive-table__head">
+                              <tr>
+                                <th>Sr. No</th>
+                                <th>Package Name</th>
+                                <th>Package Type</th>
+                                <th>Expiry Date</th>
+                                <th>Amount</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let package of subscription.packages">
+                                <tr>
+                                  <td>{{ getAlphabetLetter(i) }}.</td>
+                                  <td>
+                                    <a style="cursor: pointer;">
+                                      {{ package.package_name }}
+
+                                    </a>
+                                  </td>
+                                  <td>{{ package.package_type }}</td>
+                                  <td>{{ package.subscription_until | date }}</td>
+                                  <td>₹{{ package.amount }}/-</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="5">
+                                    <table class="ChildSubTable table table-striped table-bordered">
+                                      <thead>
+                                        <tr>
+                                          <th>Sr. no</th>
+                                          <th>Subpackage Name</th>
+
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <ng-container *ngFor="let subpackage of package.sub_packages; let i = index;">
+                                          <tr (click)="toggleCategory(subpackage)" style="cursor: pointer;">
+                                            <td>{{i+1}}</td>
+                                            <td>{{ subpackage.sub_package_name
+                                              }} </td>
+
+                                          </tr>
+                                          <tr *ngIf="subpackage.showCategory">
+                                            <td colspan="5">
+                                              <table class="CategoriesTable table table-striped table-bordered">
+                                                <thead>
+
+                                                  <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Category Name
+                                                    </th>
+                                                    <th>Amount</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <ng-container
+                                                    *ngFor="let category of subpackage.categories; let i = index;">
+                                                    <tr (click)="toggleCategory(category)" style="cursor: pointer;">
+                                                      <td> {{i+1}} </td>
+                                                      <td>{{
+                                                        category.category_name
+                                                        }} </td>
+
+                                                      <td>₹{{
+                                                        category.amount
+                                                        }}/-</td>
+                                                    </tr>
+                                                    <tr *ngIf="category.showCategory">
+                                                      <td colspan="5">
+                                                        <table
+                                                          class="SubCategoriesTable table table-striped table-bordered">
+                                                          <thead>
+                                                            <tr>
+                                                              <th>Sr. no
+                                                              </th>
+                                                              <th>Category's
+                                                                Category
+                                                                Name
+                                                              </th>
+                                                              <th>Amount
+                                                              </th>
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <ng-container
+                                                              *ngFor="let subCategory of category.categories; let i = index;">
+                                                              <tr>
+                                                                <td>{{
+                                                                  i+1
+                                                                  }}
+                                                                </td>
+                                                                <td>{{
+                                                                  subCategory.category_name
+                                                                  }}
+                                                                </td>
+                                                                <td>₹{{
+                                                                  subCategory.amount
+                                                                  }}/-
+                                                                </td>
+                                                              </tr>
+                                                            </ng-container>
+                                                          </tbody>
+                                                        </table>
+                                                      </td>
+                                                    </tr>
+                                                  </ng-container>
+                                                </tbody>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </ng-container>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                  <ng-template #noDataFound>
+                    <tr>
+                      <td colspan="5" class="center">No Data Found</td>
+                    </tr>
+                  </ng-template>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

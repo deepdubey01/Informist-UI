@@ -1,0 +1,118 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <h1 class="text-end">
+            Menu Preference
+        </h1>
+    </section>
+
+    <div class="text-end my-4">
+
+    </div>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                Add Menu
+            </div>
+            <div class="card-body">
+                <form action="" method="post" #addPackageForm="ngForm" (ngSubmit)="addPackage()"
+                    enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <input type="file" name="xlsxFile" id="xlsxFile" class="form-control"
+                                    (change)="onFileSelected($event)" accept=".xlsx">
+                                <small class="help-text text-danger">{{ error_message }}</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 my-auto">
+                            <button type="submit" class="btn btn-primary">Preview</button>
+                            <button type="reset" class="btn btn-cancel">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+        <!-- Add this section below your form -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Package List</span>
+                        <div class="text-end my-2">
+                            <button (click)="SendCSV(content)"
+                                class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4">
+                                <i class="fa fa-file-download mx-2"></i>Proceed
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div *ngIf="tableDataNew && tableDataNew.length > 0" class="table-responsive">
+                                <table class="c-table">
+                                    <thead class="c-table__header">
+                                        <tr>
+                                            <th *ngFor="let header of tableHeaders" class="c-table__col-label">{{ header
+                                                }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="c-table__body">
+                                        <tr *ngFor="let row of tableDataNew; let i = index">
+                                            <td *ngFor="let header of tableHeaders" class="c-table__cell">{{ row[header]
+                                                }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="!csvFile" class="text-center mt-4">
+                                <p>Please upload a CSV file to preview.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="reload()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="icon"><img src="assets/images/tick-with-circle.svg" alt=""></div>
+        <h2>Menu Added Successful...!!</h2>
+        <p class="description">Enjoy your jounrey with us.</p>
+
+        <div class="action-buttons button-bottom-fixed my-3">
+            <span (click)="reload()" class="custom-button custom-secondary-button style-2">Click me..!!</span>
+        </div>
+    </div>
+</ng-template>

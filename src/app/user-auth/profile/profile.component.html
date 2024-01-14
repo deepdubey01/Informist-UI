@@ -1,0 +1,92 @@
+<app-header></app-header>
+
+<main class="top-spacing bottom-spacing">
+  <div class="container">
+    <a class="back-button" href="/otp?mobile_number={{mobileNumber}}">
+      <img src="assets/images/arrow-left.svg" alt="">
+    </a>
+  </div>
+  <div class="section-top-space login-section">
+    <div class="container">
+      <div class="form-container">
+        <h2>We'd like to get to know you a little more</h2>
+        <form class="form" #myForm="ngForm" (ngSubmit)="updateProfile(myForm)">
+          <div class="form-group pt-0">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" name="name" required [(ngModel)]="profileData.name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email ID</label>
+            <input type="email" id="email" class="form-control" name="email" required [(ngModel)]="profileData.email">
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <div class="disable-ng-select-styles">
+              <ng-select id="country" class="form-control" name=" country" required [(ngModel)]="selectedCountry"
+                [clearable]="true" #countrySelect="ngModel" (ngModelChange)="setCountryValidity(countrySelect)">
+
+                <ng-option value="1">
+                  <img src="assets/images/flags/india.svg" width="20px" height="20px" />
+                  India
+                </ng-option>
+
+                <ng-option value="2">
+                  <img src="assets/images/flags/usa.svg" width="20px" height="20px" />
+                  United States
+                </ng-option>
+
+                <!-- Add the rest of the options directly -->
+                <ng-option value="Australia">
+                  <img src="assets/images/flags/australia.svg" width="20px" height="20px" />
+                  Australia
+                </ng-option>
+
+                <ng-option value="United Kingdom">
+                  <img src="assets/images/flags/uk.svg" width="20px" height="20px" />
+                  United Kingdom
+                </ng-option>
+
+                <ng-option value="Singapore">
+                  <img src="assets/images/flags/singapore.svg" width="20px" height="20px" />
+                  Singapore
+                </ng-option>
+
+                <ng-option value="Canada">
+                  <img src="assets/images/flags/canada.svg" width="20px" height="20px" />
+                  Canada
+                </ng-option>
+
+                <ng-option value="Hong Kong">
+                  <img src="assets/images/flags/hong-kong.svg" width="20px" height="20px" />
+                  Hong Kong
+                </ng-option>
+
+                <ng-option value="United Arab Emirates">
+                  <img src="assets/images/flags/uae.svg" width="20px" height="20px" />
+                  United Arab Emirates
+                </ng-option>
+
+                <ng-option value="Germany">
+                  <img src="assets/images/flags/germany.svg" width="20px" height="20px" />
+                  Germany
+                </ng-option>
+              </ng-select>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" class="form-control" name="city" required [(ngModel)]="profileData.city">
+          </div>
+          <div *ngIf="errorMessage" class="error-message text-danger">{{ errorMessage }}</div>
+          <div class="action-buttons button-bottom-fixed">
+            <button type="submit" class="custom-button custom-primary-button"
+              [disabled]="!isFormValid(myForm)">Proceed</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</main>

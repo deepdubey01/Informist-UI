@@ -1,0 +1,149 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Add Categories
+        </h1>
+    </section>
+    <section class="content">
+        <div class="card text-left">
+            <div class="card-header">
+                <span> User Lists</span>
+                <div class="text-end">
+
+                    <button class="btn btn-success " type="button" (click)="addSubcategory()">Add
+                        Subcategory</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+
+                        <form class="form p-2 " (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="category_name">Main Category Name</label>
+                                        <input type="text" name="maincategoryname"
+                                            [(ngModel)]="mainCategory.category_name" id="maincategoryname"
+                                            class="form-control" placeholder="Main Category Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="amount">Main Category Amount</label>
+                                        <input type="number" name="maincategory_amount"
+                                            [(ngModel)]="mainCategory.amount" id="maincategory_amount"
+                                            class="form-control" placeholder="0.00" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="maincategory_code">Main Category Code</label>
+                                        <input type="text" name="maincategory_code"
+                                            [(ngModel)]="mainCategory.category_code" id="maincategory_code"
+                                            class="form-control" placeholder="Main Category code" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="maincategory_description">Main Category Description</label>
+                                        <input type="text" name="maincategory_description"
+                                            placeholder="Enter Main Category Description"
+                                            [(ngModel)]="mainCategory.description" id="maincategory_description"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group pt-2">
+                                        <label for="status">Main Category Status</label>
+                                        <select name="status" [(ngModel)]="mainCategory.status" id="status"
+                                            class="form-control">
+                                            <option value="ACTIVE">ACTIVE</option>
+                                            <option value="INACTIVE">INACTIVE</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngFor="let subcategory of mainCategory.categories; let subcategoryIndex = index">
+                                <div class="row mb-2 px-5 mx-5">
+                                    <div class="col-lg-3">
+                                        <div class="form-group pt-2">
+                                            <label for="category_name">Subcategory Name</label>
+                                            <input type="text" name="subcategory_name_{{subcategoryIndex}}"
+                                                [(ngModel)]="subcategory.category_name"
+                                                id="subcategory_name_{{subcategoryIndex}}" class="form-control"
+                                                placeholder="Subcategory Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group pt-2">
+                                            <label for="code">Subcategory Code</label>
+                                            <input type="text" name="subcategory_code_{{subcategoryIndex}}"
+                                                [(ngModel)]="subcategory.category_code"
+                                                id="subcategory_code_{{subcategoryIndex}}" class="form-control"
+                                                placeholder="Subcategory code" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group pt-2">
+                                            <label for="status">Subcategory Status</label>
+                                            <select name="subcategory_status_{{subcategoryIndex}}"
+                                                [(ngModel)]="subcategory.status"
+                                                id="subcategory_status_{{subcategoryIndex}}" class="form-control">
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group pt-2 my-5 py-5">
+                                            <button class="btn btn-danger" type="button"
+                                                (click)="removeSubcategory(subcategoryIndex)">Remove
+                                                Subcategory</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <button class="btn btn-info submitFormbtn" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

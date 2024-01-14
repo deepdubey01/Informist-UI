@@ -1,0 +1,23 @@
+.form-control {
+    height: 40px;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 0px 10px;
+}
+
+
+.custom-button {
+    background-color: var(--primary-button-color-default);
+}
+
+.custom-button:hover {
+    background-color: var(--primary-button-color-hover);
+}
+
+.custom-button span {
+    color: inherit;
+}
+
+.custom-button:hover span {
+    color: fff;
+}

@@ -1,0 +1,201 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Add Package
+        </h1>
+    </section>
+    <section class="content">
+        <div class="card shadow">
+            <div class="card-header">
+                Add/Edit Package
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <form action="" class="form p-2 " #addPackageForm="ngForm"
+                            (ngSubmit)="addPackage(addPackageForm)">
+                            <div class="row my-4">
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="package_name">Package Name</label>
+                                        <input type="text" name="package_name" [(ngModel)]="package_name"
+                                            id="package_name" class="form-control" placeholder="Enter Package Name"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="package_code">Package Code</label>
+                                        <input type="text" maxlength="20" name="package_code" [(ngModel)]="package_code"
+                                            id="package_code" class="form-control" placeholder="Enter Package Code"
+                                            required>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="full_service_month">Max Subscription Amount</label>
+                                        <input type="number" name="full_service_month" [(ngModel)]="full_service_month"
+                                            id="full_service_month" class="form-control" placeholder="0.00">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="part_service_month">Minimum Subscription Amount </label>
+                                        <input type="number" name="part_service_month" [(ngModel)]="part_service_month"
+                                            id="part_service_month" class="form-control" placeholder="0.00">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row my-4">
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="discount_monthly">Discount Monthly</label>
+                                        <input type="number" name="discount_monthly" [(ngModel)]="discount_monthly"
+                                            id="discount_monthly" class="form-control" placeholder="0.00%">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="discount_quarterly">Discount Quarterly</label>
+                                        <input type="number" name="discount_quarterly" [(ngModel)]="discount_quarterly"
+                                            id="discount_quarterly" class="form-control" placeholder="0.00%">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="discount_yearly">Discount Yearly</label>
+                                        <input type="number" name="discount_yearly" [(ngModel)]="discount_yearly"
+                                            id="discount_yearly" class="form-control" placeholder="0.00%">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label for="status">Status</label>
+                                    <select name="status" [(ngModel)]="status" id="status" class="form-control">
+                                        <option value="ACTIVE">Active</option>
+                                        <option value="INACTIVE">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4 d-none">
+                                    <div class="form-group pt-2">
+                                        <label for="feed_live_amount"> Subscription Price</label>
+                                        <input type="number" name="feed_live_amount" [(ngModel)]="feed_live_amount"
+                                            id="feed_live_amount" class="form-control" placeholder="₹0.00" value="0"
+                                            required>
+                                    </div>
+                                </div>
+                                <span class="text-danger"><b>{{error_message}}</b></span>
+                            </div>
+
+                            <hr>
+
+                            <!-- <div class="row">
+                                <div class="my-2">
+                                    <span class="btn btn-info text-white float-end mx-4 p-2" (click)="addDelayInput()">
+                                        <i class="fa fa-plus text-white" aria-hidden="true"></i> Add Delay Input
+                                    </span>
+                                </div>
+
+                                <div class="row" *ngFor="let delayInput of delayInputs; let i = index">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="delay_id{{ i }}">Delay Name</label>
+                                            <select name="delay_id{{ i }}" [(ngModel)]="delayInputs[i].delay_id"
+                                                [id]="'delay_id' + i" class="form-control" required>
+                                                <option value="">Select Delay Name</option>
+                                                <option *ngFor="let option of delayNameOptions"
+                                                    [value]="option.delay_id">{{
+                                                    option.delay_name }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="amount{{ i }}">Amount</label>
+                                            <input type="number" name="amount{{ i }}"
+                                                [(ngModel)]="delayInputs[i].amount" [id]="'amount' + i"
+                                                class="form-control" placeholder="Amount" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="form-group">
+                                            <label for="amount_type{{ i }}">Amount Type</label>
+                                            <select name="amount_type{{ i }}" [(ngModel)]="delayInputs[i].amount_type"
+                                                [id]="'amount_type' + i" class="form-control" required>
+                                                <option value="IN_PERCENT">In Percent</option>
+                                                <option value="IN_VALUE">In Value</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="deleteDelayInput(i)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> -->
+
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group pt-2">
+                                        <label for="description">Description</label>
+                                        <textarea name="description" [(ngModel)]="description" id="description"
+                                            cols="100" rows="5" class="border w-100 rounded p-4"
+                                            style="background-color: white;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class=" row">
+                                <div class="col-lg-4">
+
+                                    <button class="btn btn-info submitFormbtn" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

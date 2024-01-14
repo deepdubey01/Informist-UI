@@ -1,0 +1,83 @@
+<app-sidebar-layout></app-sidebar-layout>
+
+<div class="content-wrapper">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-white shadow">
+
+        <button class="navbar-toggler" type="button" (click)="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="logout-container">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class=" navbar-text logoutBtn " role="button" id="dropdown1" ngbDropdownToggle>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                    <img class="img-profile rounded-circle" src="assets/images/undraw_profile.svg"
+                        style="width: 3rem;"></button>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                </a>
+                <div ngbDropdownMenu aria-labelledby="dropdown1">
+                    <a class="dropdown-item" href="admin/admin-change-password"> Change Password</a>
+                    <a class="dropdown-item" (click)="adminlogout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Delay Manage
+
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Delay List</span>
+                        <div class="text-end my-2">
+                            <a href="admin/add-delay"
+                                class="btn btn-primary text-white back-button-admin mx-2 py-2 px-4">
+                                <i class="fa fa-plus text-white" aria-hidden="true"></i>
+                                Add Delay
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="box-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                                <table id="user_table" class="c-table ">
+                                    <thead class="c-table__header ">
+                                        <tr>
+                                            <th class="c-table__col-label">Sr. no</th>
+                                            <th class="c-table__col-label">Name</th>
+                                            <th class="c-table__col-label">Time in Minutes</th>
+                                            <th class="c-table__col-label">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="c-table__body">
+                                        <tr *ngFor="let user of delay_data; let i = index">
+                                            <td class="c-table__cell">{{ i + 1 }}</td>
+                                            <td class="c-table__cell">{{user.delay_name}}</td>
+                                            <td class="c-table__cell"> {{user.no_of_minutes}} Min. </td>
+                                            <td class="c-table__cell">
+                                                <span href="admin/" class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

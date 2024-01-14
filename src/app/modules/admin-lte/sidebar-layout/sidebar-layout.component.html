@@ -1,0 +1,76 @@
+<div class="main-sidebar" [ngClass]="{'show-sidebar': isSidebarOpen}" id="collapsibleNavId">
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <h2 class="text-white p-2 my-2" href="admin/user-manage">INFORMIST ADMIN</h2>
+      <hr class="sidebar-divider my-2 ">
+      <li class=" treeview">
+        <!-- <a href="admin/dashboard-lte">
+          <i class="fa fa-duotone fa-database mx-2" aria-hidden="true"></i> <span>Dashboard</span>
+        </a> -->
+      </li>
+      <li>
+        <a href="admin/user-manage">
+          <i class="fa fa-th mx-2"></i> <span>User Management</span>
+        </a>
+      </li>
+
+      <li [ngClass]="{'active': isSubmenuOpen}" (click)="toggleSubmenu($event)">
+        <a href="javascript:void(0);">
+          <i class="fa fa-list-ol mx-2" aria-hidden="true"></i>
+          <span>Packages</span>
+          <i class="fas fa-angle-left pull-right" [ngClass]="{'rotate-90': isSubmenuOpen}"></i>
+        </a>
+
+        <ul class="treeview-menu" [ngClass]="{'active': isSubmenuOpen}">
+          <li>
+            <a href="javascript:void(0);" (click)="navigateToAllpackage()">All Packages</a>
+          </li>
+          <li *ngFor="let package of allPackage">
+            <a href="javascript:void(0);"
+              (click)="navigateToSubpackage(package.package_id)">{{package.package_name}}</a>
+          </li>
+        </ul>
+      </li>
+
+
+
+
+      <li class="treeview">
+        <a href="admin/subscription-manage">
+          <i class="fa fa-list mx-2"></i>
+          <span>User Subscription</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="admin/bulk-user">
+          <i class="fa fa-users mx-2" aria-hidden="true"></i>
+          <span>Bulk User</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="admin/add-menu">
+          <i class="fa fa-users mx-2" aria-hidden="true"></i>
+          <span>Add Menu</span>
+        </a>
+      </li>
+
+      <li class="treeview">
+        <a href="admin/payment-list">
+          <i class="fas fa-money-bill mx-2"></i>
+          <span>Payment List</span>
+        </a>
+      </li>
+
+
+      <!--   <li>
+        <a href="admin/delay-manage">
+          <i class="fas fa-clock mx-2"></i> <span>Delay Management</span>
+        </a>
+      </li> -->
+
+
+    </ul>
+  </section>
+</div>

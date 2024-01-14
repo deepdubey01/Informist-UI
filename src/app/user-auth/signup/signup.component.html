@@ -1,0 +1,139 @@
+<!-- <app-header></app-header> -->
+<main class="d-flex justify-content-center align-items-center gradient-form " style="background-color: #FFF;">
+  <div class="container-fluid py-2">
+    <div class="row my-4 d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0 m-0">
+
+            <div class="col-lg-5 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">Informist Media is an independent real-time financial wire agency based in India
+                  that in its previous avatars was known as Cogencis (news), NewsWire18, and Crisil MarketWire.</p>
+              </div>
+            </div>
+
+            <div class="col-lg-7 d-flex justify-content-center align-items-center">
+              <div class="col-lg-10">
+                <div class="card-body p-md-4 mx-md-4">
+                  <div class="text-center">
+                    <img src="assets/images/informist-text-logo_with-tagline_white-bg.svg" style="width: 50%;">
+                    <h4 class="mt-1 mb-5 pb-1 title-logo">We are The Informist Team</h4>
+                  </div>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <form class="form my-4" #signUpForm="ngForm" (ngSubmit)="signUp(signUpForm)">
+                      <p>Please login to your account</p>
+
+                      <div class="row">
+                        <div class=" col">
+                          <div class="form-group pt-2">
+                            <input type="text" id="fname" [maxlength]="15" [(ngModel)]="fname" class="form-control"
+                              placeholder="First name" name="fname" ngModel required>
+                          </div>
+                        </div>
+                        <div class="col  ">
+                          <div class="form-group pt-2">
+                            <input type="text" id="lname" [maxlength]="15" [(ngModel)]="lname" class="form-control"
+                              placeholder="Last name" name="lname" ngModel required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col">
+                          <div class="form-group pt-2">
+                            <input type="email" id="email_id" [maxlength]="40" [(ngModel)]=" email_id"
+                              class="form-control" placeholder="Enter your email" name="email_id" ngModel required>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-9 col">
+                          <div class="form-group pt-2">
+                            <input type="number" name="mobile_no" onKeyPress="if(this.value.length>=10) return false;"
+                              class="form-control" id="mobile_no" placeholder="Enter your mobile number"
+                              [(ngModel)]="mobile_no" (input)="mobilenumberOTP($event)">
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="VerifyButton" aria-disabled="true">
+                            <a class="btn btn-dark" [ngClass]="{'disabled': !validMobileLength}"
+                              (click)="showVerificationInput()">Verify</a>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 col" *ngIf="isVerificationInputVisible">
+                          <div class="form-group pt-1">
+                            <input type="number" name="verificationCode"
+                              onKeyPress="if(this.value.length>=6) return false;" placeholder="Enter OTP"
+                              id="verificationCode" class="form-control" maxlength="6" [(ngModel)]="verificationCode"
+                              (input)="handleVerificationCodeChange()">
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                      <div class="row">
+                        <div class=" col">
+                          <div class="form-group pt-2">
+                            <input type="password" id="password" [maxlength]="15" [(ngModel)]="password"
+                              class="form-control" placeholder=" Password" name="password" ngModel required>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group pt-2">
+                            <input type="password" id="cpassword" [maxlength]="15" [(ngModel)]="cpassword"
+                              class="form-control" placeholder="Confirm password" name="cpassword" ngModel required>
+                          </div>
+                        </div>
+                      </div>
+
+                      <small class="text-danger">{{errorMessage}}</small>
+                      <!-- <small class="text-danger" *ngIf="verified">Please verify your phone number before
+    proceeding.</small> -->
+
+                      <div class="text-center pt-1 my-3 mpb-1">
+                        <button type="submit" id="btnLogin"
+                          class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 w-100 p-4">Signup</button>
+                      </div>
+
+
+
+                      <div class="d-flex align-items-center justify-content-center pb-4">
+                        <p class="mb-0 me-2">Already have an account..!! &nbsp;</p>
+                        <a href="login" style="color:palevioletred"> Login</a>
+                      </div>
+
+                    </form>
+                  </div>
+
+                  <div class="text-center">
+                    <input type="hidden" id="hdFieldP" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #responseModalMain let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">SignUp Successful</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="goToLogin()"></button>
+  </div>
+  <div class="modal-body signUp-Body">
+    <h2>
+      Congratulations! Your registration is completed. Welcome to our platform!
+    </h2>
+    <p>Login now to get your free trial!</p>
+  </div>
+  <div class="modal-footer">
+    <a type="button" class="btn btn-secondary" href="login">Login</a>
+  </div>
+</ng-template>

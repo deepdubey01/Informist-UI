@@ -1,0 +1,58 @@
+<app-sidebar-layout></app-sidebar-layout>
+<div class="content-wrapper" style="min-height: 918px;">
+    <section class="content-header">
+        <div>
+            <button (click)="goBack()" class="back-button-admin btn btn-primary py-2 px-4 "> <i
+                    class="fa fa-caret-left " aria-hidden="true"></i> Back</button>
+        </div>
+        <h1 class="text-start">
+            Add Delay
+        </h1>
+    </section>
+    <section class="content">
+        <div class="card shadow">
+            <div class="card-header">
+                Add/Edit Package
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <form action="" class="form p-2" #addPackageForm="ngForm"
+                            (ngSubmit)="addPackage(addPackageForm)">
+                            <div class="row my-4">
+                                <div class="col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="delay_name">Feed Name</label>
+                                        <input type="text" name="delay_name" [(ngModel)]="delay_name" id="delay_name"
+                                            class="form-control" placeholder="Enter Delay Name" required
+                                            list="delayNameOptions">
+                                        <datalist id="delayNameOptions">
+                                            <option *ngFor="let option of delayNameOptions" [value]="option.delay_name">
+
+                                            </option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div class=" col-lg-3">
+                                    <div class="form-group pt-2">
+                                        <label for="no_of_minutes">Feed Time(In Minutes)</label>
+                                        <input type="text" maxlength="3" name="no_of_minutes"
+                                            [(ngModel)]="no_of_minutes" id="no_of_minutes" class="form-control"
+                                            placeholder="10" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-lg-4">
+                                    <button class="btn btn-info submitFormbtn" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

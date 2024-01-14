@@ -1,0 +1,338 @@
+<app-header></app-header>
+<!-- main:start -->
+<main class="top-spacing-2">
+  <!-- banner-section:start -->
+  <div class="banner-section">
+    <div class="container">
+      <div class="banner-container">
+        <div class="banner-content">
+          <h1>Real-time & Unbiased, Financial News for you to Stay Ahead of the Game</h1>
+          <div class="mobile-content-wrap">
+            <div class="content-wrap">
+              <p>Curate & customise the news that brings you the most value.</p>
+
+            </div>
+            <img class="mobile-banner-image" src="assets/images/real-time-mobile-img_2x.png" alt="">
+          </div>
+
+        </div>
+        <img class="desktop-banner-image" src="assets/images/real-time-img_2x.png" alt="">
+      </div>
+    </div>
+  </div>
+  <!-- banner-section:end -->
+
+  <!-- featured-section:start -->
+  <div class="section-spacing featured-section">
+    <div class="container">
+      <div class="featured-list row">
+        <div class="list col-lg-6 col-sm-12 ">
+          <div class="icon"><img src="assets/images/finger.svg" alt=""></div>
+          <div class="list-content">
+            <h3>Real - time news at<br>
+              your fingertips.</h3>
+            <p>The Informist provides credible and accurate news without any delay. </p>
+          </div>
+        </div>
+        <div class="list col-lg-6 col-sm-12 ">
+          <div class="icon"><img src="assets/images/real-time-news.svg" alt=""></div>
+          <div class="list-content">
+            <h3>No ads. No clutter.<br>
+              Only Accurate News.</h3>
+            <p>We sift through the noise and present precise and concise information.</p>
+          </div>
+        </div>
+        <div class="list  col-lg-6 col-sm-12">
+          <div class="icon"><img src="assets/images/on-ground.svg" alt=""></div>
+          <div class="list-content">
+            <h3>Independent,<br>
+              on-ground reporting.</h3>
+            <p>The Informist provides credible and accurate news without any delay. </p>
+          </div>
+        </div>
+        <div class="list col-lg-6 col-sm-12 ">
+          <div class="icon"><img src="assets/images/cart-selection.svg" alt=""></div>
+          <div class="list-content">
+            <h3>À La Carte Selection</h3>
+            <p>Select and pay only for the wires and topics that are most relevant to you</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- wire-section:start -->
+  <div class="wire-section">
+    <div class="container">
+      <h2 class="section-heading">We’ve Got It All!</h2>
+    </div>
+  </div>
+  <div class="wire-list-section">
+    <div class="container">
+      <div class="wire-list row">
+        <div *ngFor="let item of responseData;" class="list col-sm-12 col-md-4 col-lg-4 mx-auto">
+          <div class="top">
+            <div class="title-wrap">
+              <img src="assets/images/diamond.svg" alt="">
+              <div class="title">{{item.package_name}}</div>
+            </div>
+            <p>{{item.description}}</p>
+          </div>
+          <p class="price">For just <span class="bold">₹{{ item.part_service_month }} - ₹{{ item.full_service_month
+              }}</span> per month</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- wire-section:end -->
+
+
+
+
+  <!-- team-section:start -->
+  <!-- <div class="section-spacing team-section">
+    <div class="container">
+      <h2 class="section-heading">Meet the Team</h2>
+      <div class="swiper" id="teamSwiper">
+        <div class="swiper-wrapper">
+          <ngb-carousel #carousel [interval]="10000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+            (slide)="onSlide($event)">
+            <ng-template ngbSlide>
+              <div class="swiper-slide" *ngFor="let teamMember of teamMembers">
+                <div class="custom-card">
+                  <div class="photo"><img [src]="teamMember.photo" alt=""></div>
+                  <div class="name">{{ teamMember.name }}</div>
+                  <div class="designation">{{ teamMember.designation }}</div>
+                  <div class="bio">{{ teamMember.bio }}</div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <!-- testimonial-section:end -->
+
+  <!-- home-faq-section:start -->
+  <!-- <div class="accordion section-spacing home-faq-section" id="accordionExample">
+    <div class="container">
+      <h2 class="section-heading">Frequently Asked Questions</h2>
+      <div class="home-faqs-accordion" id="faqs">
+        <div class="  custom-accordion-item">
+          <h2 class="custom-accordion-header accordion-header" id="headingOne">
+            <button class="custom-accordion-button accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="custom-accordion-collapse accordion-collapse collapse"
+            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance,
+              as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class=" custom-accordion-item">
+          <h2 class="accordion-header custom-accordion-header" id="headingTwo">
+            <button class="custom-accordion-button accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="collapseTwo" class="custom-accordion-collapse accordion-collapse collapse"
+            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance,
+              as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class=" custom-accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="custom-accordion-button accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="collapseThree" class="custom-accordion-collapse accordion-collapse collapse"
+            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse
+              plugin
+              adds the appropriate classes that we use to style each element. These classes control the overall
+              appearance,
+              as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
+              overriding our default variables. It's also worth noting that just about any HTML can go within the
+              <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+  <!-- <div class="section-spacing home-faq-section">
+    <div class="container">
+      <h2 class="section-heading">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="home-faqs-accordion" id="faqs">
+          <div class="custom-accordion-item">
+            <div class="custom-accordion-header" id="faqs_heading_1">
+              <button class="custom-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqs_collapse_1" aria-expanded="false" aria-controls="faqs_collapse_1">
+                What types of news stories are covered by this app?
+              </button>
+            </div>
+            <div id="faqs_collapse_1" class="custom-accordion-collapse collapse" aria-labelledby="faqs_heading_1"
+              data-bs-parent="#faqs">
+              <div class="accordion-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            </div>
+          </div>
+          <div class="custom-accordion-item">
+            <div class="custom-accordion-header" id="faqs_heading_2">
+              <button class="custom-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqs_collapse_2" aria-expanded="false" aria-controls="faqs_collapse_2">
+                What features are included with a subscription?
+              </button>
+            </div>
+            <div id="faqs_collapse_2" class="custom-accordion-collapse collapse" aria-labelledby="faqs_heading_2"
+              data-bs-parent="#faqs">
+              <div class="accordion-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            </div>
+          </div>
+          <div class="custom-accordion-item">
+            <div class="custom-accordion-header" id="faqs_heading_3">
+              <button class="custom-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqs_collapse_3" aria-expanded="false" aria-controls="faqs_collapse_3">
+                How do I cancel my subscription if I decide that the app is not for me?
+              </button>
+            </div>
+            <div id="faqs_collapse_3" class="custom-accordion-collapse collapse" aria-labelledby="faqs_heading_3"
+              data-bs-parent="#faqs">
+              <div class="accordion-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            </div>
+          </div>
+          <div class="custom-accordion-item">
+            <div class="custom-accordion-header" id="faqs_heading_4">
+              <button class="custom-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqs_collapse_4" aria-expanded="false" aria-controls="faqs_collapse_4">
+                Is there a trial period available before I commit to a subscription?
+              </button>
+            </div>
+            <div id="faqs_collapse_4" class="custom-accordion-collapse collapse" aria-labelledby="faqs_heading_4"
+              data-bs-parent="#faqs">
+              <div class="accordion-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            </div>
+          </div>
+          <div class="custom-accordion-item">
+            <div class="custom-accordion-header" id="faqs_heading_5">
+              <button class="custom-accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faqs_collapse_5" aria-expanded="false" aria-controls="faqs_collapse_5">
+                Can I access the app on multiple devices with the same subscription?
+              </button>
+            </div>
+            <div id="faqs_collapse_5" class="custom-accordion-collapse collapse" aria-labelledby="faqs_heading_5"
+              data-bs-parent="#faqs">
+              <div class="accordion-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
+                release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- faq-section:end -->
+</main>
+
+<footer>
+  <div class="footer-top-section">
+    <div class="container">
+      <div class="footer-top-container">
+
+        <ul class="contact-links">
+          <li>
+            <h1><a href="">Contact Us</a></h1>
+          </li>
+          <li><img src="assets/images/email.svg" alt=""> <a
+              href="mailto:contact@informistdata.com">contact@informistdata.com</a></li>
+          <li><img src="assets/images/phone.svg" alt=""> <a href="tel:18002678787">18002678787</a> / <a
+              href="tel:9987895111">9987895111</a>
+          </li>
+        </ul>
+        <ul class="social-links">
+          <li><a href="javascript:;" target="_blank"><img src="assets/images/linkedin.svg" alt=""></a></li>
+          <li><a href="javascript:;" target="_blank"><img src="assets/images/instagram.svg" alt=""></a></li>
+          <li><a href="javascript:;" target="_blank"><img src="assets/images/facebook.svg" alt=""></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-section">
+    <div class="container">
+      <div class="footer-bottom-container">
+        <ul class="footer-links">
+          <li><a href="javascript:;">Privacy Policy</a></li>
+          <li><a href="javascript:;">Terms of Use</a></li>
+          <li><a href="javascript:;">Refund & Cancellation Policy</a></li>
+        </ul>
+        <p class="copyright">2023 &copy; All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
